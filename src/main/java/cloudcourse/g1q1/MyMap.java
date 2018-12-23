@@ -11,11 +11,12 @@ public class MyMap extends Mapper<Object, Text, Text, IntWritable> {
 
 	@Override
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-		String[] tokens = value.toString().replace('(', ' ').replace(')',' ').trim().split(",");
+		String line = value.toString();
+		String tokens[] = line.substring(1, line.length() - 1).split(",");
 
 		if(tokens.length == 2) {
 			String origin = tokens[0];
-			String dest = tokens[1];
+			String   dest = tokens[1];
 			
 			context.write(new Text(origin), new IntWritable(1));
 			context.write(new Text(dest), new IntWritable(1));			
