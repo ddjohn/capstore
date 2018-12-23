@@ -23,7 +23,7 @@ public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 			context.write(new Text(company), new FloatWritable(Float.parseFloat(delay)));
 		} 
 		else {
-			System.out.println("Discarding: " + value);
+			System.out.println("Discarding: " + line);
 		}
 	}
 }

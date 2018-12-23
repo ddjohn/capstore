@@ -21,5 +21,8 @@ public class MyMap extends Mapper<Object, Text, Text, IntWritable> {
 			context.write(new Text(origin), new IntWritable(1));
 			context.write(new Text(dest), new IntWritable(1));			
 		}
+		else {
+			System.out.println("Discarding: " + line);
+		}
 	}
 }
