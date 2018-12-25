@@ -17,9 +17,10 @@ public class MyMain extends Configured implements Tool {
 
 		job.setMapperClass(MyMap.class);
 		job.setReducerClass(MyReduce.class);
+		job.setCombinerClass(MyCombiner.class);
 
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(IntWritable.class);
+		job.setOutputValueClass(FloatWritable.class);
 
 		FileInputFormat.setInputPaths(job, new Path("/input"));
 		FileOutputFormat.setOutputPath(job, new Path("/output"));
