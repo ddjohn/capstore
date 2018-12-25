@@ -1,4 +1,4 @@
-package cloudcourse.g1q2;
+package cloudcourse.g1q3;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;

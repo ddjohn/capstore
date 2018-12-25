@@ -1,4 +1,4 @@
-package cloudcourse.g1q2;
+package cloudcourse.g1q3;
 
 import java.io.IOException;
 import org.apache.hadoop.io.*;
