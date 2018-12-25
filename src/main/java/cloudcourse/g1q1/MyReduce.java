@@ -5,7 +5,8 @@ import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Reducer;
 
 public class MyReduce extends Reducer<Text, IntWritable, Text, IntWritable> {
-
+	private IntWritable sumValue = new IntWritable();
+	
 	@Override
 	public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
 
@@ -13,6 +14,8 @@ public class MyReduce extends Reducer<Text, IntWritable, Text, IntWritable> {
 		for (IntWritable val : values) {
 			sum += val.get();
 		}
-		context.write(key, new IntWritable(sum));
+		
+		sumValue.set(sum);
+		context.write(key, sumValue);
 	}
 }
