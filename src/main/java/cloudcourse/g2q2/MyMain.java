@@ -1,4 +1,4 @@
-package cloudcourse.g1q3;
+package cloudcourse.g2q2;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -17,6 +17,7 @@ public class MyMain extends Configured implements Tool {
 
 		job.setMapperClass(MyMap.class);
 		job.setReducerClass(MyReduce.class);
+	//	job.setCombinerClass(MyCombiner.class);
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(FloatWritable.class);
