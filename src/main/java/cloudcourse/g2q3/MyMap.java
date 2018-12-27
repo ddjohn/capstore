@@ -21,8 +21,8 @@ public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 		if(tokens.length >=10 && 
 				tokens[DataSet.AIRLINEID].isEmpty() == false && 
 				tokens[DataSet.ORIGIN].isEmpty() == false && 
-				tokens[2].isEmpty() == false && 
-				tokens[9].isEmpty() == false) {
+				tokens[DataSet.DEST].isEmpty() == false && 
+				tokens[DataSet.ARRDELAY].isEmpty() == false) {
 			
 			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST] + "_" + tokens[DataSet.AIRLINEID]);
 			delay.set(Float.parseFloat(tokens[DataSet.ARRDELAY]));
