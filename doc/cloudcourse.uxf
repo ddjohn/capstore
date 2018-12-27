@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>20</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>420</y>
+      <w>740</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>MyMap
+--
+
+--
+setup(Context ctx):void
+map(Object key,Text value,Context ctx):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2280</x>
+      <y>420</y>
+      <w>820</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>MyReduce
+--
+
+--
+reduce(Text key,Iterable values,Context ctx):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1120</x>
+      <y>0</y>
+      <w>440</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>MyMain
+--
+
+--
+#main(String[] args): void
+run(String[] args): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>680</y>
+      <w>480</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;mapreduce&gt;&gt;
+Configured
+--
+
+--
+getConf(): Configuration 
+setConf(Configuration conf): void </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1140</x>
+      <y>680</y>
+      <w>360</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;mapreduce&gt;&gt;
+Tool
+--
+
+--
+/*run(String[] args):int*/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>680</y>
+      <w>740</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;mapreduce&gt;&gt;
+Mapper
+--
+
+--
+/*setup(Context ctx):void*/
+/*map(Object key,Text value,Context ctx): void*/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>180</y>
+      <w>480</w>
+      <h>540</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+generalize</panel_attributes>
+    <additional_attributes>10.0;250.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2280</x>
+      <y>680</y>
+      <w>820</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;mapreduce&gt;&gt;
+MyReduce
+--
+
+--
+/*reduce(Text key,Iterable values,Context ctx):void*/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1860</x>
+      <y>580</y>
+      <w>60</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2680</x>
+      <y>580</y>
+      <w>60</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1540</x>
+      <y>100</y>
+      <w>380</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+mapper</panel_attributes>
+    <additional_attributes>170.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1540</x>
+      <y>40</y>
+      <w>1180</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+reduce</panel_attributes>
+    <additional_attributes>570.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>680</y>
+      <w>280</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;mapreduce&gt;&gt;
+Configuration
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>760</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1320</x>
+      <y>180</y>
+      <w>160</w>
+      <h>540</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+realize</panel_attributes>
+    <additional_attributes>10.0;250.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1220</x>
+      <y>1120</y>
+      <w>980</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Pig
+/*Data Access*/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1220</x>
+      <y>1240</y>
+      <w>980</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Hadoop MapReduce
+/*Distributed Data Processing*/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1220</x>
+      <y>1360</y>
+      <w>480</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Hadoop HDFS
+/*Distributed Data Storage*/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1720</x>
+      <y>1360</y>
+      <w>480</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Cassandra
+/*Distributed Data Storage*/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>420</x>
+      <y>1800</y>
+      <w>200</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>customelement=
+// Text Elemnt
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(0,(height+0.5)/5,width,(height)*3/5-1) fg=#929292 bg=#222222 //Parameters (x, y, width, height)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(0,height*1/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*2/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>440</x>
+      <y>1960</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Datasets</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>720</x>
+      <y>1580</y>
+      <w>320</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Pig conf
+- Column definition
+- Filtering</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>1820</y>
+      <w>320</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Data Cleaning
+Apache Pig </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1200</x>
+      <y>1820</y>
+      <w>200</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>HDFS</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>1880</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>1700</y>
+      <w>60</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1020</x>
+      <y>1880</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1540</x>
+      <y>1820</y>
+      <w>200</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>MapReduce</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1360</x>
+      <y>1880</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1500</x>
+      <y>1580</y>
+      <w>280</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Java
+- Job definition
+- Map function
+- Reduce function</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1620</x>
+      <y>1700</y>
+      <w>60</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1860</x>
+      <y>1820</y>
+      <w>200</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Report</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1720</x>
+      <y>1880</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
