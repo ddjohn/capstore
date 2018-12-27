@@ -1,4 +1,4 @@
-# CloudCourse
+# CloudCourse - Project Capstore Report
 
 Report
 https://docs.google.com/document/d/1jrREFppkCRVBYSl1C7hKfoaREpwUgRnbk3Yl_Y4tiN8/edit?usp=sharing
