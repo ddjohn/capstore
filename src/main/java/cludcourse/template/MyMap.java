@@ -7,12 +7,8 @@ import org.apache.hadoop.mapreduce.Mapper;
 public class MyMap extends Mapper<Object, Text, Text, IntWritable> {
 
 	@Override
-	protected void setup(Context context) throws IOException, InterruptedException {
-		
-	}
+	protected void setup(Context context) throws IOException, InterruptedException {}
 
 	@Override
-	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-	
-	}
+	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {}
 }

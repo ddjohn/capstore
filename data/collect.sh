@@ -29,9 +29,9 @@ case "$1" in
 
 	hdfs)
 		cat */${RESULT} > input
-		hdfs dfs -rm -r /${RESULT}/
-		hdfs dfs -copyFromLocal input /${RESULT}
-		hdfs dfs -ls /${RESULT}
+		hdfs dfs -rm -r /input
+		hdfs dfs -copyFromLocal input /input
+		hdfs dfs -find /
 		;;
 
 	*)

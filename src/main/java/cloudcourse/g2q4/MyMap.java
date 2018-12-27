@@ -1,4 +1,4 @@
-package cloudcourse.g2q1;
+package cloudcourse.g2q4;
 
 import java.io.IOException;
 import org.apache.hadoop.io.*;
@@ -18,13 +18,13 @@ public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 		String line = value.toString();
 		String tokens[] = line.substring(1, line.length() - 1).split(",");
 
-		if(tokens.length >=8 && 
+		if(tokens.length >= 10 && 
 				tokens[DataSet.ORIGIN].isEmpty() == false && 
-				tokens[DataSet.UNIQUECARRIER].isEmpty() == false && 
-				tokens[7].isEmpty() == false) {
+				tokens[DataSet.DEST].isEmpty() == false && 
+				tokens[DataSet.ARRDELAY].isEmpty() == false) {
 			
-			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.UNIQUECARRIER]);
-			delay.set(Float.parseFloat(tokens[7]));
+			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.ORIGIN]);
+			delay.set(Float.parseFloat(tokens[DataSet.ARRDELAY]));
 			context.write(combo, delay);
 		} 
 		else {

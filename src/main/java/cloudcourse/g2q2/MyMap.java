@@ -4,6 +4,8 @@ import java.io.IOException;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
 
+import cloudcourse.globals.DataSet;
+
 public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 	private Text combo = new Text();
 	private FloatWritable delay = new FloatWritable();
@@ -16,11 +18,13 @@ public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 		String line = value.toString();
 		String tokens[] = line.substring(1, line.length() - 1).split(",");
 
-		//ORIGIN, DEST, UNIQUECARRIER, DEPDELAY, ARRDELAY
-//		if(tokens.length == 5) {
-		if(tokens.length > 4 && tokens[4] != null) {
-			combo.set(tokens[1] + "_" + tokens[2]);
-			delay.set(Float.parseFloat(tokens[4]));
+		if(tokens.length >=8 && 
+				tokens[DataSet.ORIGIN].isEmpty() == false && 
+				tokens[DataSet.ORIGIN].isEmpty() == false && 
+				tokens[DataSet.DEPDELAY].isEmpty() == false) {
+			
+			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.ORIGIN]);
+			delay.set(Float.parseFloat(tokens[DataSet.DEPDELAY]));
 			context.write(combo, delay);
 		} 
 		else {

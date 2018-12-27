@@ -4,6 +4,8 @@ import java.io.IOException;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
 
+import cloudcourse.globals.DataSet;
+
 public class MyMap extends Mapper<Object, Text, Text, IntWritable> {
 	private Text airport = new Text();
 	private final static IntWritable valueOne = new IntWritable(1);
@@ -11,17 +13,20 @@ public class MyMap extends Mapper<Object, Text, Text, IntWritable> {
 	@Override
 	protected void setup(Context context) throws IOException, InterruptedException {}
 
-	@Override
+	@Override		
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 		
 		String line = value.toString();
 		String tokens[] = line.substring(1, line.length() - 1).split(",");
 
-		if(tokens.length == 2) {
-			airport.set(tokens[0]); // origin 
+		if(tokens.length >= 7 &&
+				tokens[DataSet.ORIGIN].isEmpty() == false &&
+				tokens[DataSet.DEST].isEmpty() == false) {
+			
+			airport.set(tokens[DataSet.ORIGIN]);
 			context.write(airport, valueOne);
 			
-			airport.set(tokens[1]); // destination
+			airport.set(tokens[DataSet.DEST]);
 			context.write(airport, valueOne);			
 		}
 		else {
