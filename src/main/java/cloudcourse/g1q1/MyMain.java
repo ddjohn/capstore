@@ -10,6 +10,8 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+import cloudcourse.globals.DataSet;
+
 public class MyMain extends Configured implements Tool {
 
 	public int run(String[] arg0) throws Exception {
@@ -32,6 +34,7 @@ public class MyMain extends Configured implements Tool {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Starting...");
 		int res = ToolRunner.run(new Configuration(), new MyMain(), args);
+		System.out.println("Discarded: " + DataSet.discarded);
 		System.out.println("Ending...");
 		System.exit(res);
 	}

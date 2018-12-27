@@ -19,7 +19,7 @@ public class MyMap extends Mapper<Object, Text, Text, IntWritable> {
 		String line = value.toString();
 		String tokens[] = line.substring(1, line.length() - 1).split(",");
 
-		if(tokens.length >= 7 &&
+		if(tokens.length > DataSet.ORIGIN &&
 				tokens[DataSet.ORIGIN].isEmpty() == false &&
 				tokens[DataSet.DEST].isEmpty() == false) {
 			
@@ -31,6 +31,7 @@ public class MyMap extends Mapper<Object, Text, Text, IntWritable> {
 		}
 		else {
 			System.out.println("Discarding: " + line);
+			DataSet.discarded++;
 		}
 	}
 }

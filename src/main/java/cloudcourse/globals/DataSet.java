@@ -9,6 +9,8 @@ public class DataSet {
 	public static final int ORIGIN = 6;
 	public static final int DEPDELAY = 7;
 	public static final int ARRDELAY = 9;
+	
+	public static int discarded = 0;
 
 }
 /* 

@@ -28,6 +28,7 @@ public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 		} 
 		else {
 			System.out.println("Discarding: " + line);
+			DataSet.discarded++;
 		}
 	}
 }
