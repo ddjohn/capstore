@@ -18,18 +18,18 @@ public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 		String line = value.toString();
 		String tokens[] = line.substring(1, line.length() - 1).split(",");
 
-		if(tokens.length >=10 && 
-				tokens[DataSet.AIRLINEID].isEmpty() == false && 
+		if(tokens.length > DataSet.ARRDELAY && 
+				tokens[DataSet.UNIQUECARRIER].isEmpty() == false && 
 				tokens[DataSet.ORIGIN].isEmpty() == false && 
 				tokens[DataSet.DEST].isEmpty() == false && 
 				tokens[DataSet.ARRDELAY].isEmpty() == false) {
 			
-			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST] + "_" + tokens[DataSet.AIRLINEID]);
+			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST] + "_" + tokens[DataSet.UNIQUECARRIER]);
 			delay.set(Float.parseFloat(tokens[DataSet.ARRDELAY]));
 			context.write(combo, delay);
 		} 
 		else {
-			System.out.println("Discarding: " + line);
+			//System.out.println("Discarding: " + line);
 			DataSet.discarded++;
 		}
 	}

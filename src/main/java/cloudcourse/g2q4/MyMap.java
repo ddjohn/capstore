@@ -23,12 +23,12 @@ public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 				tokens[DataSet.DEST].isEmpty() == false && 
 				tokens[DataSet.ARRDELAY].isEmpty() == false) {
 			
-			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.ORIGIN]);
+			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST]);
 			delay.set(Float.parseFloat(tokens[DataSet.ARRDELAY]));
 			context.write(combo, delay);
 		} 
 		else {
-			System.out.println("Discarding: " + line);
+			//System.out.println("Discarding: " + line);
 			DataSet.discarded++;
 		}
 	}

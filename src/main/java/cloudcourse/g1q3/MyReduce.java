@@ -5,7 +5,7 @@ import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Reducer;
 
 public class MyReduce extends Reducer<Text, FloatWritable, Text, FloatWritable> {
-	private FloatWritable averageSum = new FloatWritable();
+	private FloatWritable averageValue = new FloatWritable();
 	
 	@Override
 	public void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
@@ -17,7 +17,7 @@ public class MyReduce extends Reducer<Text, FloatWritable, Text, FloatWritable> 
 			count++;
 		}
 		
-		averageSum.set(sum / count);
-		context.write(key, averageSum);
+		averageValue.set(sum / count);
+		context.write(key, averageValue);
 	}
 }
