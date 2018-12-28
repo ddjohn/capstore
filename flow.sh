@@ -59,6 +59,9 @@ hdfs dfs -cat /output/* | grep "^JFK_LAX"
 hdfs dfs -cat /output/* | grep "^ATL_PHX" 
 hdfs dfs -mv /output /G2Q4
 
+# G3Q2
+(cd data && ./g3q2.sh)
+
 # Load Cassandra
 cassandra/g2q1.sh | cqlsh
 cassandra/g2q2.sh | cqlsh
