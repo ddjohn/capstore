@@ -1,0 +1,65 @@
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q2$ hdfs dfs -cat /output/* | tr "_" " " | grep "^CMI" | sort -n -k3 | head -10
+CMI ABI	-7.0
+CMI CVG	1.8947617
+CMI PIT	1.1024306
+CMI DAY	3.1162353
+CMI STL	3.9816732
+CMI PIA	4.591892
+CMI DFW	5.944143
+CMI ATL	6.665138
+CMI ORD	8.194098
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q2$ hdfs dfs -cat /output/* | tr "_" " " | grep "^BWI" | sort -n -k3 | head -10
+BWI SAV	-7.0
+BWI DAB	1.4695946
+BWI IAD	1.7909408
+BWI MLB	1.1553673
+BWI SRQ	1.5884839
+BWI CHO	3.7449276
+BWI UCA	3.6541698
+BWI BGM	4.553771
+BWI DCA	4.7214613
+BWI GSP	4.1976867
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q2$ hdfs dfs -cat /output/* | tr "_" " " | grep "^MIA" | sort -n -k3 | head -10
+MIA SHV	0.0
+MIA BUF	1.0
+MIA SAN	1.7103825
+MIA HOU	2.912199
+MIA SLC	2.5371902
+MIA ISP	3.647399
+MIA MEM	3.7451067
+MIA PSE	3.9758453
+MIA GNV	4.9976573
+MIA MCI	4.612245
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q2$ hdfs dfs -cat /output/* | tr "_" " " | grep "^LAX" | sort -n -k3 | head -10
+LAX SDF	-16.0
+LAX IDA	-7.0
+LAX DRO	-6.0
+LAX RSW	-3.0
+LAX LAX	-2.0
+LAX BZN	-0.72727275
+LAX MAF	0.0
+LAX PIH	0.0
+LAX IYK	1.2698247
+LAX MEM	1.8697988
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q2$ hdfs dfs -cat /output/* | tr "_" " " | grep "^IAH" | sort -n -k3 | head -10
+IAH MSN	-2.0
+IAH AGS	-0.6187905
+IAH MLI	-0.5
+IAH EFD	1.8877082
+IAH HOU	2.172037
+IAH JAC	2.5705884
+IAH MTJ	2.950157
+IAH BPT	3.5995326
+IAH RNO	3.2215843
+IAH VCT	3.6119087
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q2$ hdfs dfs -cat /output/* | tr "_" " " | grep "^SFO" | sort -n -k3 | head -10
+SFO SDF	-10.0
+SFO MSO	-4.0
+SFO PIH	-3.0
+SFO LGA	-1.7575758
+SFO PIE	-1.3410405
+SFO FAR	0.0
+SFO OAK	-0.8132005
+SFO BNA	2.4259665
+SFO MEM	3.3024824
+SFO MKE	4.4225

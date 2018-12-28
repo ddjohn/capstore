@@ -1,0 +1,12 @@
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q4$ hdfs dfs -cat /output/* | grep "^CMI_ORD" 
+CMI_ORD	10.143662
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q4$ hdfs dfs -cat /output/* | grep "^IND_CMH" 
+IND_CMH	2.8999038
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q4$ hdfs dfs -cat /output/* | grep "^DFW_IAH" 
+DFW_IAH	7.65447
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q4$ hdfs dfs -cat /output/* | grep "^LAX_SFO" 
+LAX_SFO	9.589283
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q4$ hdfs dfs -cat /output/* | grep "^JFK_LAX" 
+JFK_LAX	6.635119
+david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q4$ hdfs dfs -cat /output/* | grep "^ATL_PHX" 
+ATL_PHX	9.021959
