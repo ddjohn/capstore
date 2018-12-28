@@ -1,4 +1,6 @@
-david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q3$ hdfs dfs -cat /output/* | grep "^CMI_ORD" | sort -n -k2 | head -10
+david@david-UX310UQK:~/Public/cloudcourse/solutions$ hdfs dfs -cat /output/* | grep "^CMI_ORD" | sort -n -k2 | head -10
+CMI_ORD_MQ	10.143662
+david@david-UX310UQK:~/Public/cloudcourse/solutions$ hdfs dfs -cat /output/* | grep "^IND_CMH" | sort -n -k2 | head -10
 IND_CMH_CO	-2.5458546
 IND_CMH_AA	5.5
 IND_CMH_HP	5.697255
@@ -6,7 +8,7 @@ IND_CMH_NW	5.7615385
 IND_CMH_US	6.8784695
 IND_CMH_DL	10.6875
 IND_CMH_EA	10.813084
-david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q3$ hdfs dfs -cat /output/* | grep "^IND_CMH" | sort -n -k2 | head -10
+david@david-UX310UQK:~/Public/cloudcourse/solutions$ hdfs dfs -cat /output/* | grep "^DFW_IAH" | sort -n -k2 | head -10
 DFW_IAH_PA (1)	-1.5964912
 DFW_IAH_EV	5.0925136
 DFW_IAH_UA	5.4142013
@@ -16,7 +18,7 @@ DFW_IAH_AA	8.381307
 DFW_IAH_DL	8.598509
 DFW_IAH_XE	8.094295
 DFW_IAH_MQ	9.103211
-david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q3$ hdfs dfs -cat /output/* | grep "^LAXC_SFO" | sort -n -k2 | head -10
+david@david-UX310UQK:~/Public/cloudcourse/solutions$ hdfs dfs -cat /output/* | grep "^LAX_SFO" | sort -n -k2 | head -10
 LAX_SFO_TZ	-7.6190476
 LAX_SFO_F9	-2.0286858
 LAX_SFO_PS	-2.1463416
@@ -27,14 +29,14 @@ LAX_SFO_MQ	7.8077636
 LAX_SFO_US	7.964722
 LAX_SFO_WN	8.792051
 LAX_SFO_CO	9.354783
-david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q3$ hdfs dfs -cat /output/* | grep "^LAX_SFO" | sort -n -k2 | head -10
+david@david-UX310UQK:~/Public/cloudcourse/solutions$ hdfs dfs -cat /output/* | grep "^JFK_LAX" | sort -n -k2 | head -10
 JFK_LAX_PA (1)	11.0194435
 JFK_LAX_UA	3.3138745
 JFK_LAX_AA	6.9037247
 JFK_LAX_HP	6.680599
 JFK_LAX_DL	7.93446
 JFK_LAX_TW	11.702008
-david@david-UX310UQK:~/Public/cloudcourse/solutions/g2q3$ hdfs dfs -cat /output/* | grep "^JFK_LAX" | sort -n -k2 | head -10
+david@david-UX310UQK:~/Public/cloudcourse/solutions$ hdfs dfs -cat /output/* | grep "^ATL_PHX" | sort -n -k2 | head -10
 ATL_PHX_FL	4.5526314
 ATL_PHX_US	6.288115
 ATL_PHX_EA	8.953571
