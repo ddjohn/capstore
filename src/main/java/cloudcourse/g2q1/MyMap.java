@@ -21,7 +21,7 @@ public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 		if(tokens.length > DataSet.DEPDELAY && 
 				tokens[DataSet.ORIGIN].isEmpty() == false && 
 				tokens[DataSet.UNIQUECARRIER].isEmpty() == false && 
-				tokens[7].isEmpty() == false) {
+				tokens[DataSet.DEPDELAY].isEmpty() == false) {
 			
 			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.UNIQUECARRIER]);
 			delay.set(Float.parseFloat(tokens[DataSet.DEPDELAY]));
