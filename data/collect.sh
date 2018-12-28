@@ -12,7 +12,7 @@ rm -f pig_*.log
 case "$1" in
 
 	process)
-		for FILE in /cloud/aviation/airline_ontime/*200*/*.zip
+		for FILE in /cloud/aviation/airline_ontime/*/*.zip
 		do
 			echo "#"
 			echo "# Scanning ${FILE} ..."
@@ -21,7 +21,7 @@ case "$1" in
 			echo ${YEAR}
 			mkdir -p ${YEAR}
 			unzip -o ${FILE} -d ${YEAR}
-			pig -x local -4 nolog.conf -f ${LOADER} -param FILE=${YEAR}/*.csv | tail +2 > ${YEAR}/${RESULT}
+			pig -x local -f ${LOADER} -param FILE=${YEAR}/*.csv | tail +2 > ${YEAR}/${RESULT}
 			rm ${YEAR}/*.csv
 			echo ""
 		done
