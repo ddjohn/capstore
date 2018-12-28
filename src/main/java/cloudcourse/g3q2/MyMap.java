@@ -1,4 +1,4 @@
-package cloudcourse.g2q4;
+package cloudcourse.g3q2;
 
 import java.io.IOException;
 import org.apache.hadoop.io.*;
@@ -21,15 +21,14 @@ public class MyMap extends Mapper<Object, Text, Text, FloatWritable> {
 		if(tokens.length > DataSet.ARRDELAY && 
 				tokens[DataSet.ORIGIN].isEmpty() == false && 
 				tokens[DataSet.DEST].isEmpty() == false && 
-				tokens[DataSet.FLIGHTDATE].isEmpty() == false && 
-				tokens[DataSet.ARRDELAY].isEmpty() == false) {
-
-			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST] + "_" + DataSet.FLIGHTDATE);
+				tokens[DataSet.FLIGHTDATE].isEmpty() == false) {
+			
+			combo.set(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST] + "_" + tokens[DataSet.FLIGHTDATE]);
 			delay.set(Float.parseFloat(tokens[DataSet.ARRDELAY]));
 			context.write(combo, delay);
 		} 
 		else {
-			System.out.println("Discarding: " + line);
+			//System.out.println("Discarding: " + line);
 			DataSet.discarded++;
 		}
 	}
