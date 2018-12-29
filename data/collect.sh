@@ -12,8 +12,7 @@ rm -f pig_*.log
 case "$1" in
 
 	process)
-		for FILE in /cloud/aviation/airline_ontime/*/*2007_6*.zip
-		#for FILE in /cloud/aviation/airline_ontime/*/*.zip
+		for FILE in /cloud/aviation/airline_ontime/*/*.zip
 		do
 			echo "#"
 			echo "# Scanning ${FILE} ..."
