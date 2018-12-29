@@ -1,4 +1,5 @@
-# CloudCourse - Project Capstore Report
+# Cloud Computing Course - Project Capstore Report
+Coursera - University of Illinoise
 
 Results
 https://gitlab.com/ddjohn/cloudcourse/tree/master/solutions
