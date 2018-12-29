@@ -2,7 +2,6 @@ package cloudcourse.globals;
 
 public class DataSet {
 
-	//(4,2005-01-27,DL,627,DCA,CVG,1108,3.0,-2.0)
 	public static final int DAYOFWEEK     = 0;
 	public static final int FLIGHTDATE    = 1;
 	public static final int UNIQUECARRIER = 2;

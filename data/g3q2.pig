@@ -16,17 +16,19 @@ flights_w_date = FOREACH flights GENERATE DAYOFWEEK, FLIGHTDATE, UNIQUECARRIER,
 	FLIGHTNUM, ORIGIN, DEST, DEPTIME, ARRDELAY;
 
 -- Early flights
-early_flights = FILTER flights_w_date BY (ORIGIN == '$ORIGIN') AND (DEST == '$MIDDLE') AND (DEPTIME < '1200') AND (FLIGHTDATE == '$ORIGINDATE');
+early_flights = FILTER flights_w_date BY (ORIGIN == '$ORIGIN') AND (DEST == '$MIDDLE') 
+	AND (DEPTIME < '1200') AND (FLIGHTDATE == '$ORIGINDATE');
 
 -- Late flights
-late_flights = FILTER flights_w_date BY (ORIGIN == '$MIDDLE') AND (DEST == '$DEST') AND (DEPTIME > '1200') AND (FLIGHTDATE == '$MIDDLEDATE');
+late_flights = FILTER flights_w_date BY (ORIGIN == '$MIDDLE') AND (DEST == '$DEST') 
+	AND (DEPTIME > '1200') AND (FLIGHTDATE == '$MIDDLEDATE');
 
 -- Lets join
-join_flights  = JOIN 
+join_flights = JOIN 
 	early_flights BY (DEST), 
 	late_flights BY (ORIGIN);
 
-
+-- Create a report
 report = FOREACH join_flights GENERATE 	CONCAT(early_flights::ORIGIN, '=>', early_flights::DEST), 
 					CONCAT(early_flights::UNIQUECARRIER, ' ', early_flights::FLIGHTNUM),
                                        	CONCAT(early_flights::FLIGHTDATE, ' ', early_flights::DEPTIME), 
