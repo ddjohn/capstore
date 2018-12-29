@@ -12,7 +12,8 @@ rm -f pig_*.log
 case "$1" in
 
 	process)
-		for FILE in /cloud/aviation/airline_ontime/*/*.zip
+		for FILE in /cloud/aviation/airline_ontime/*/*2007_6*.zip
+		#for FILE in /cloud/aviation/airline_ontime/*/*.zip
 		do
 			echo "#"
 			echo "# Scanning ${FILE} ..."
@@ -22,6 +23,7 @@ case "$1" in
 			mkdir -p ${YEAR}
 			unzip -o ${FILE} -d ${YEAR}
 			pig -x local -f ${LOADER} -param FILE=${YEAR}/*.csv | tail +2 > ${YEAR}/${RESULT}
+			#gzip ${YEAR}/${RESULT}
 			rm ${YEAR}/*.csv
 			echo ""
 		done
@@ -35,7 +37,7 @@ case "$1" in
 		;;
 
 	*)
-		echo "syntax: $0 <process|hdfs|mapreduce>" 1>&2
+		echo "syntax: $0 <process|hdfs>" 1>&2
 		exit 1
 		;;
 esac
