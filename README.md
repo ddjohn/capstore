@@ -1,5 +1,5 @@
 # Cloud Computing Course - Project Capstore Report
-Coursera - University of Illinoise
+Coursera - University of Illinois
 
 Course 
 https://www.coursera.org/learn/cloud-computing-project/home/welcome
