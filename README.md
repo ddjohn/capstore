@@ -11,7 +11,7 @@ Report
 https://docs.google.com/document/d/1jrREFppkCRVBYSl1C7hKfoaREpwUgRnbk3Yl_Y4tiN8/edit?usp=sharing
 
 Video
-TBD
+https://youtu.be/uPlSskUjsME
 
 Source code
 https://gitlab.com/ddjohn/cloudcourse
