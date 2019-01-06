@@ -27,6 +27,8 @@ public class MyContext extends JavaStreamingContext {
 	
 	public MyContext() {
 		super(conf, Durations.seconds(2));
+		
+		this.checkpoint("checkpoint");
 	}
 
 	public JavaInputDStream<ConsumerRecord<String, String>> createStream() {
@@ -40,5 +42,12 @@ public class MyContext extends JavaStreamingContext {
 		params.put("group.id", "cloudcourse");
 
 		return KafkaUtils.createDirectStream(this, LocationStrategies.PreferConsistent(), ConsumerStrategies.Subscribe(topics, params));
+	}
+
+	public void run() throws InterruptedException {
+		this.start();
+		this.awaitTerminationOrTimeout(1500000); //ctx.awaitTermination();
+		this.stop(true, true); //ctx.stop();
+		this.close();		
 	}
 }
