@@ -2,6 +2,9 @@ package spark;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.spark.SparkConf;
+import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.Optional;
 import scala.Tuple2;
 import cloudcourse.globals.DataSet;
@@ -9,6 +12,14 @@ import cloudcourse.globals.DataSet;
 public class G2Q2Main {
 
 	public static final void main(String[] args) throws InterruptedException {
+		
+		SparkConf conf = new SparkConf().setAppName( "My application");
+		SparkContext sc = new SparkContext(conf);
+		//JavaRDDstring cassandraRdd = CassandraJavaUtil.javaFunctions(sc)
+		 //       .cassandraTable("my_keyspace", "my_table", .mapColumnTo(String.class))
+		  //      .select("my_column");
+		
+		
 		MyContext ctx = new MyContext();
 
 		ctx.createStream("cloudcourse")

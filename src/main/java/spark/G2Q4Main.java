@@ -44,7 +44,7 @@ public class G2Q4Main {
 		.mapToPair(x -> x.swap())
 
 		// Print top 10
-		.print(10000);
+		.print(Integer.MAX_VALUE);
 
 		ctx.run();
 		ctx.close();

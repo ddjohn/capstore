@@ -45,19 +45,19 @@
 			<version>2.4.0</version>
 		</dependency>
 
-<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-core</artifactId>
-    <version>2.9.8</version>
-</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.8</version>
+		</dependency>
 
-<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.9.8</version>
-</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
@@ -70,6 +70,69 @@
 			<artifactId>scala-library</artifactId>
 			<version>2.11.11</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.datastax.cassandra</groupId>
+			<artifactId>cassandra-driver-core</artifactId>
+			<version>3.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0</version>
+		</dependency>
+
+ <!-- https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector -->
+<dependency>
+    <groupId>com.datastax.spark</groupId>
+    <artifactId>spark-cassandra-connector_2.11</artifactId>
+    <version>2.4.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.cassandra/cassandra-javautils -->
+<dependency>
+    <groupId>org.apache.cassandra</groupId>
+    <artifactId>cassandra-javautils</artifactId>
+    <version>0.7.1</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector -->
+<dependency>
+    <groupId>com.datastax.spark</groupId>
+    <artifactId>spark-cassandra-connector_2.11</artifactId>
+    <version>2.4.0</version>
+</dependency>
+
+
+<!-- dependency>
+    <groupId>com.datastax</groupId>
+    <artifactId>dse</artifactId>
+    <version>version number</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/lib/dse-spark-version number.jar</systemPath>
+</dependency -->
+
+<!-- https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-dse -->
+<dependency>
+    <groupId>com.datastax.cassandra</groupId>
+    <artifactId>cassandra-driver-dse</artifactId>
+    <version>3.0.0-rc1</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector -->
+<dependency>
+    <groupId>com.datastax.spark</groupId>
+    <artifactId>spark-cassandra-connector_2.11</artifactId>
+    <version>2.3.2</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
+<dependency>
+    <groupId>commons-configuration</groupId>
+    <artifactId>commons-configuration</artifactId>
+    <version>1.6</version>
+</dependency>
 
 	</dependencies>
 
