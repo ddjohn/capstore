@@ -31,9 +31,9 @@ public class MyContext extends JavaStreamingContext {
 		this.checkpoint("checkpoint");
 	}
 
-	public JavaInputDStream<ConsumerRecord<String, String>> createStream() {
+	public JavaInputDStream<ConsumerRecord<String, String>> createStream(String topic) {
 		Set<String> topics = new HashSet<String>();
-		topics.add("cloudcourse");
+		topics.add(topic);
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("bootstrap.servers", "localhost:9092");
@@ -48,6 +48,5 @@ public class MyContext extends JavaStreamingContext {
 		this.start();
 		this.awaitTerminationOrTimeout(1500000); //ctx.awaitTermination();
 		this.stop(true, true); //ctx.stop();
-		this.close();		
 	}
 }

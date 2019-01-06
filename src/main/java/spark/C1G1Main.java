@@ -17,7 +17,7 @@ public class C1G1Main {
 	public static final void main(String[] args) throws InterruptedException {
 		MyContext ctx = new MyContext();
 
-		ctx.createStream()
+		ctx.createStream("cloudcourse")
 
 		.flatMapToPair(x -> {
 			// Parse the input data
@@ -52,8 +52,10 @@ public class C1G1Main {
 		.transformToPair(x -> x.sortByKey(false))
 		.mapToPair(x -> x.swap())
 
-		.print(20);
+		// Print top 10
+		.print(10);
 
 		ctx.run();
+		ctx.close();
 	}
 }

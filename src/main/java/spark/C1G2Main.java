@@ -14,6 +14,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.Optional;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.streaming.Durations;
@@ -34,11 +35,12 @@ public class C1G2Main {
 	public static final void main(String[] args) throws InterruptedException {
 		MyContext ctx = new MyContext();
 
-		ctx.createStream()
-		//.map(x -> x.value())
-		.flatMap(x -> {
-			String[] tokens =  x.value().substring(1, x.toString().length() - 1).split(",");
-			
+		ctx.createStream("cloudcourse")
+
+		.flatMapToPair(x -> {
+			//System.out.println("Line: " + x.value());
+			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
+
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.ARRDELAY && 
 					tokens[DataSet.UNIQUECARRIER].isEmpty() == false && 
@@ -48,35 +50,31 @@ public class C1G2Main {
 			}
 			return list.iterator();
 		})
-		
-		//.countByValue()
-		//.transform(x -> {
-			//System.out.println("DAJO: " + x.sortByKey(false).take(10));
-		//	return x.sortByKey(false);
-		//})
-		.print(100);
 
-		/*
-		JavaDStream<String> one = KafkaUtils.createDirectStream(
-				ctx, LocationStrategies.PreferConsistent(), ConsumerStrategies.Subscribe(topics, params))
+		// Sum by key
+		//.reduceByKey((i1, i2) -> i1 + i2)
 
-				// Read each line
-				.map(x -> x.value())
+		// Remember the keys 
+		.updateStateByKey((nums, current) -> {
+			
+			Average habba = current.or(new Average());
+			for(float i : nums) {
+				//System.out.println("Scanning: " + i);
+				habba.count++;
+				habba.sum += i;
+			}
+			return Optional.of(habba);
+		})
 
-				// Remove parenthesis, tokenize and return 5th field 
-				.map(x -> x.toString().substring(1, x.toString().length() - 1).split(",")[DataSet.ORIGIN]);
+		// Sort by swapping values to keys and back
+		.mapToPair(x -> x.swap())
+		.transformToPair(x -> x.sortByKey(true))
+		.mapToPair(x -> x.swap())
 
-		JavaPairDStream<String, Long> pair = one.mapToPair(x -> new Tuple2<String, Long>(x, 1L));
+		// Print top 10
+		.print();
 
-		JavaPairDStream<String, Long> ttt = pair.reduceByKey((x, y) -> (x+y));
-		JavaPairDStream<String, Long> t = ttt.transformToPair(x -> x.sortByKey());
-
-		t.print(1000);
-		 */
-
-		ctx.start();
-		ctx.awaitTerminationOrTimeout(300000); //ctx.awaitTermination();
-		ctx.stop(true, true); //ctx.stop();
+		ctx.run();
 		ctx.close();
 	}
 }
