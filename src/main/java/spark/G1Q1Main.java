@@ -1,18 +1,12 @@
 package spark;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.Optional;
-import org.apache.spark.streaming.api.java.JavaPairDStream;
-
 import cloudcourse.globals.DataSet;
 import scala.Tuple2;
 
-public class C1G1Main {
+public class G1Q1Main {
 
 	public static final void main(String[] args) throws InterruptedException {
 		MyContext ctx = new MyContext();
