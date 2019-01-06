@@ -38,7 +38,6 @@ public class C1G2Main {
 		ctx.createStream("cloudcourse")
 
 		.flatMapToPair(x -> {
-			//System.out.println("Line: " + x.value());
 			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
 
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
@@ -50,9 +49,6 @@ public class C1G2Main {
 			}
 			return list.iterator();
 		})
-
-		// Sum by key
-		//.reduceByKey((i1, i2) -> i1 + i2)
 
 		// Remember the keys 
 		.updateStateByKey((nums, current) -> {
