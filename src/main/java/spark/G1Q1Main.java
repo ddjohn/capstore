@@ -46,8 +46,8 @@ public class G1Q1Main {
 		.transformToPair(x -> x.sortByKey(false))
 		.mapToPair(x -> x.swap())
 
-		// Print top 10
-		.print(10);
+		// Print
+		.print(Integer.MAX_VALUE);
 
 		ctx.run();
 		ctx.close();

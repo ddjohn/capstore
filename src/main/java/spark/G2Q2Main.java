@@ -6,7 +6,7 @@ import org.apache.spark.api.java.Optional;
 import scala.Tuple2;
 import cloudcourse.globals.DataSet;
 
-public class G2Q1Main {
+public class G2Q2Main {
 
 	public static final void main(String[] args) throws InterruptedException {
 		MyContext ctx = new MyContext();
@@ -19,17 +19,17 @@ public class G2Q1Main {
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.DEPDELAY && 
 					tokens[DataSet.ORIGIN].isEmpty() == false && 
-					tokens[DataSet.UNIQUECARRIER].isEmpty() == false && 
+					tokens[DataSet.DEST].isEmpty() == false && 
 					tokens[DataSet.DEPDELAY].isEmpty() == false) {
-				
-				list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.UNIQUECARRIER], Float.parseFloat(tokens[DataSet.DEPDELAY])));
+
+				list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST], Float.parseFloat(tokens[DataSet.DEPDELAY])));
 			}
 			return list.iterator();
 		})
 
 		// Remember the keys 
 		.updateStateByKey((nums, current) -> {
-			
+
 			Average average = current.or(new Average());
 			for(float i : nums) {
 				average.count++;
