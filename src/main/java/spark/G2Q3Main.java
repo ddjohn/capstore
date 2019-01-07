@@ -7,6 +7,7 @@ import scala.Tuple2;
 import cloudcourse.globals.DataSet;
 
 public class G2Q3Main {
+	private static final String[] FILTER = {"CMI_ORD", "IND_CMH", "DFW_IAH", "LAX_SFO", "JFK_LAX", "ATL_PHX"};
 
 	public static final void main(String[] args) throws InterruptedException {
 		MyContext ctx = new MyContext();
@@ -39,13 +40,18 @@ public class G2Q3Main {
 			return Optional.of(average);
 		})
 
-		// Sort by swapping values to keys and back
-		.mapToPair(x -> x.swap())
-		.transformToPair(x -> x.sortByKey(true))
-		.mapToPair(x -> x.swap())
+		.filter(x -> {
+			for(String f : FILTER) {
+				if(x._1.startsWith(f)) {
+					return true;
+				}
+			}
+			return false;
+		})
 
-		// Print top 10
-		.print(Integer.MAX_VALUE);
+		.transformToPair(x -> x.sortByKey(true))
+	
+		.print(1000);
 
 		ctx.run();
 		ctx.close();

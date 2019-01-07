@@ -1,16 +1,19 @@
 package spark;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.apache.spark.api.java.Optional;
 import scala.Tuple2;
 import cloudcourse.globals.DataSet;
 
 public class G2Q4Main {
-
+	private static final String[] FILTER_ROUTES = {"CMI_ORD", "IND_CMH", "DFW_IAH", "LAX_SFO", "JFK_LAX", "ATL_PHX"};
+	
 	public static final void main(String[] args) throws InterruptedException {
-		MyContext ctx = new MyContext();
 
+		MyContext ctx = new MyContext();
+		
 		ctx.createStream("cloudcourse")
 
 		.flatMapToPair(x -> {
@@ -18,8 +21,8 @@ public class G2Q4Main {
 
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.ARRDELAY && 
-					tokens[DataSet.ORIGIN].isEmpty() == false && 
-					tokens[DataSet.DEST].isEmpty() == false && 
+					tokens[DataSet.ORIGIN  ].isEmpty() == false && 
+					tokens[DataSet.DEST    ].isEmpty() == false && 
 					tokens[DataSet.ARRDELAY].isEmpty() == false) {
 
 				list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST], Float.parseFloat(tokens[DataSet.ARRDELAY])));
@@ -38,13 +41,13 @@ public class G2Q4Main {
 			return Optional.of(average);
 		})
 
-		// Sort by swapping values to keys and back
-		.mapToPair(x -> x.swap())
+		.filter(x -> {		
+			return Arrays.asList(FILTER_ROUTES).contains(x._1);
+		})
+		
 		.transformToPair(x -> x.sortByKey(true))
-		.mapToPair(x -> x.swap())
 
-		// Print top 10
-		.print(Integer.MAX_VALUE);
+		.print(1000);
 
 		ctx.run();
 		ctx.close();

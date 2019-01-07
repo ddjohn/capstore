@@ -67,7 +67,7 @@ public class G2Q1Main {
 		.transformToPair(x -> x.sortByKey(true))
 		.mapToPair(x -> x.swap())
 
-		.foreachRDD(x -> {
+//		.foreachRDD(x -> {
 			/*
 			System.out.println(x);
 			Object cassandraRdd = CassandraJavaUtil.javaFunctions(x)
@@ -98,7 +98,7 @@ public class G2Q1Main {
 								return null;
 							}});
 			*/
-			x.foreach(y -> {
+/*			x.foreach(y -> {
 				String[] cols = y._1.split("_");
 				Cassandra c = new Cassandra("c");
 				PreparedStatement s = c.prepareStatement(UPDATE_STMT);
@@ -106,8 +106,9 @@ public class G2Q1Main {
 				c.close();
 			});
 		});
-		// Print top 10
+*/		// Print top 10
 		//.print(Integer.MAX_VALUE);
+		.print(10);
 
 		ctx.run();
 		ctx.close();
