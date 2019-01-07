@@ -7,7 +7,7 @@ import cloudcourse.globals.DataSet;
 import scala.Tuple2;
 
 public class G1Q1Main {
-
+	
 	public static final void main(String[] args) throws InterruptedException {
 		MyContext ctx = new MyContext();
 
@@ -21,7 +21,7 @@ public class G1Q1Main {
 			List<Tuple2<String, Long>> list = new ArrayList<Tuple2<String, Long>>();
 			if(tokens.length > DataSet.ORIGIN &&
 					tokens[DataSet.ORIGIN].isEmpty() == false &&
-					tokens[DataSet.DEST].isEmpty() == false) {
+					tokens[DataSet.DEST  ].isEmpty() == false) {
 
 				list.add(new Tuple2<String, Long>(tokens[DataSet.ORIGIN], 1L));
 				list.add(new Tuple2<String, Long>(tokens[DataSet.DEST], 1L));

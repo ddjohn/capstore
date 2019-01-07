@@ -28,6 +28,8 @@ public class G2Q1Main {
 	private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS c.g1q1 (PRIMARY KEY(origin, carrier), origin text, carrier text, delay double);";
 	private static final String UPDATE_STMT = "UPDATE c.g1q1 SET delay = ? WHERE origin = ? AND carrier = ?;";
 	
+	private static final String[] FILTER = {"CMI", "BWI", "MIA", "LAX", "IAH", "SFO"};
+
 	public static final void main(String[] args) throws InterruptedException {
 
 		//Cassandra cassandra = new Cassandra("c");
@@ -42,9 +44,9 @@ public class G2Q1Main {
 
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.DEPDELAY && 
-					tokens[DataSet.ORIGIN].isEmpty() == false && 
+					tokens[DataSet.ORIGIN       ].isEmpty() == false && 
 					tokens[DataSet.UNIQUECARRIER].isEmpty() == false && 
-					tokens[DataSet.DEPDELAY].isEmpty() == false) {
+					tokens[DataSet.DEPDELAY     ].isEmpty() == false) {
 				
 				list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.UNIQUECARRIER], Float.parseFloat(tokens[DataSet.DEPDELAY])));
 			}
@@ -63,11 +65,21 @@ public class G2Q1Main {
 		})
 
 		// Sort by swapping values to keys and back
-		.mapToPair(x -> x.swap())
-		.transformToPair(x -> x.sortByKey(true))
-		.mapToPair(x -> x.swap())
+		//.mapToPair(x -> x.swap())
+		//.mapToPair(x -> x.swap())
 
-//		.foreachRDD(x -> {
+		.filter(x -> {
+			for(String f : FILTER) {
+				if(x._1.startsWith(f)) {
+					return true;
+				}
+			}
+			return false;
+		})
+
+		.transformToPair(x -> x.sortByKey(true))
+
+		//		.foreachRDD(x -> {
 			/*
 			System.out.println(x);
 			Object cassandraRdd = CassandraJavaUtil.javaFunctions(x)
@@ -108,7 +120,7 @@ public class G2Q1Main {
 		});
 */		// Print top 10
 		//.print(Integer.MAX_VALUE);
-		.print(10);
+		.print(1000);
 
 		ctx.run();
 		ctx.close();

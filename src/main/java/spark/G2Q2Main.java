@@ -29,8 +29,8 @@ public class G2Q2Main {
 
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.DEPDELAY && 
-					tokens[DataSet.ORIGIN].isEmpty() == false && 
-					tokens[DataSet.DEST].isEmpty() == false && 
+					tokens[DataSet.ORIGIN  ].isEmpty() == false && 
+					tokens[DataSet.DEST    ].isEmpty() == false && 
 					tokens[DataSet.DEPDELAY].isEmpty() == false) {
 
 				list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST], Float.parseFloat(tokens[DataSet.DEPDELAY])));
@@ -53,9 +53,8 @@ public class G2Q2Main {
 		.mapToPair(x -> x.swap())
 		.transformToPair(x -> x.sortByKey(true))
 		.mapToPair(x -> x.swap())
-
-		// Print top 10
-		.print(Integer.MAX_VALUE);
+		
+		.print(1000);
 
 		ctx.run();
 		ctx.close();

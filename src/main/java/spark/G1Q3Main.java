@@ -19,7 +19,7 @@ public class G1Q3Main {
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.ARRDELAY && 
 					tokens[DataSet.DAYOFWEEK].isEmpty() == false && 
-					tokens[DataSet.ARRDELAY].isEmpty() == false) {
+					tokens[DataSet.ARRDELAY ].isEmpty() == false) {
 				
 				list.add(new Tuple2<String, Float>(tokens[DataSet.DAYOFWEEK], Float.parseFloat(tokens[DataSet.ARRDELAY])));
 			}

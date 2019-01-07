@@ -20,7 +20,7 @@ public class G1Q2Main {
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.ARRDELAY && 
 					tokens[DataSet.UNIQUECARRIER].isEmpty() == false && 
-					tokens[DataSet.ARRDELAY].isEmpty() == false) {
+					tokens[DataSet.ARRDELAY     ].isEmpty() == false) {
 
 				list.add(new Tuple2<String, Float>(tokens[DataSet.UNIQUECARRIER], Float.parseFloat(tokens[DataSet.ARRDELAY])));
 			}
@@ -42,7 +42,7 @@ public class G1Q2Main {
 		.mapToPair(x -> x.swap())
 		.transformToPair(x -> x.sortByKey(true))
 		.mapToPair(x -> x.swap())
-
+		
 		// Print top 10
 		.print();
 
