@@ -10,33 +10,48 @@ public class G3Q2Main {
 	public G3Q2Main(String origin, String middle, String dest, String originDate, String middleDate) throws InterruptedException {
 
 		MyContext ctx = new MyContext();
-		ctx.createStream("cloudcourse")
-		.flatMapToPair(x -> {
-			List<Tuple2<TomsFlight, Float>> list = new ArrayList<Tuple2<TomsFlight, Float>>();
 
-			String[] tokens = x.value().substring(1, x.value().length() - 1).split(",");
-			if(tokens.length > DataSet.DEPDELAY) {
-				try {
-					list.add(new Tuple2<TomsFlight, Float>(
-							new TomsFlight(
-									tokens[DataSet.ORIGIN], 
-									tokens[DataSet.DEST], 
-									null,
-									tokens[DataSet.FLIGHTDATE],
-									null),
-							Float.parseFloat(tokens[DataSet.DEPDELAY])));
-				}
-				catch(Exception e) {
-					System.out.println("e: " + e);
-				}
-			}
-			return list.iterator();
-		})
-		.filter(x -> origin.compareTo(x._1.origin) == 0)
-		.filter(x -> middle.compareTo(x._1.middle) == 0)
-		.filter(x -> originDate.compareTo(x._1.originDate) == 0)
-		.filter(x -> "1200".compareTo(x._1.originDate) < 0)
+		JavaPairDStream<TomsFlight, Float> stream = ctx.createStream("cloudcourse")
+				.flatMapToPair(x -> {
+					List<Tuple2<TomsFlight, Float>> list = new ArrayList<Tuple2<TomsFlight, Float>>();
 
+					String[] tokens = x.value().substring(1, x.value().length() - 1).split(",");
+					if(tokens[DataSet.FLIGHTDATE] == originDate) {
+						return list.iterator(); 
+					}
+
+					if(tokens.length > DataSet.DEPDELAY) {
+						try {
+							list.add(new Tuple2<TomsFlight, Float>(
+									new TomsFlight(
+											tokens[DataSet.ORIGIN], 
+											tokens[DataSet.DEST], 
+											tokens[DataSet.FLIGHTDATE],
+											tokens[DataSet.DEPTIME]),
+									Float.parseFloat(tokens[DataSet.DEPDELAY])));
+						}
+						catch(Exception e) {
+							System.out.println("e: " + e);
+						}
+					}
+					return list.iterator();
+				});
+
+
+		JavaPairDStream<TomsFlight, Float> part1 = stream
+				.filter(x ->     origin.compareTo(x._1.origin ) == 0)
+				.filter(x ->     middle.compareTo(x._1.dest   ) == 0)
+				.filter(x -> originDate.compareTo(x._1.depDate) == 0)
+				.filter(x ->     "1200".compareTo(x._1.depTime) >= 0);
+
+
+		JavaPairDStream<TomsFlight, Float> part2 = stream
+				.filter(x ->     middle.compareTo(x._1.origin ) == 0)
+				.filter(x ->       dest.compareTo(x._1.dest   ) == 0)
+				.filter(x -> middleDate.compareTo(x._1.depDate) == 0)
+				.filter(x ->     "1200".compareTo(x._1.depTime) <= 0);
+
+		part1.join(part2)
 		.print();
 
 		ctx.run();
