@@ -14,8 +14,11 @@ public class G1Q3Main {
 		ctx.createStream("cloudcourse")
 
 		.flatMapToPair(x -> {
+			
+			// Parse input data
 			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
 
+			// Build list with (dow, arrdelay)
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.ARRDELAY && 
 					tokens[DataSet.DAYOFWEEK].isEmpty() == false && 
@@ -26,7 +29,7 @@ public class G1Q3Main {
 			return list.iterator();
 		})
 
-		// Remember the keys 
+		// Update the average class with batch information 
 		.updateStateByKey((nums, current) -> {
 			
 			Average average = current.or(new Average());

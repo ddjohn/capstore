@@ -14,6 +14,7 @@ public class G1Q1Main {
 		ctx.createStream("cloudcourse")
 
 		.flatMapToPair(x -> {
+
 			// Parse the input data
 			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
 

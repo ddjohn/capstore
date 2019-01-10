@@ -15,18 +15,16 @@ public class G2Q2Main {
 		
 		SparkConf conf = new SparkConf().setAppName( "My application");
 		SparkContext sc = new SparkContext(conf);
-		//JavaRDDstring cassandraRdd = CassandraJavaUtil.javaFunctions(sc)
-		 //       .cassandraTable("my_keyspace", "my_table", .mapColumnTo(String.class))
-		  //      .select("my_column");
-		
 		
 		MyContext ctx = new MyContext();
 
 		ctx.createStream("cloudcourse")
 
+		// Parse input data
 		.flatMapToPair(x -> {
 			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
 
+			// Build list with (origin_dest, depdelay)
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.DEPDELAY && 
 					tokens[DataSet.ORIGIN  ].isEmpty() == false && 
@@ -38,7 +36,7 @@ public class G2Q2Main {
 			return list.iterator();
 		})
 
-		// Remember the keys 
+		// Update the average class with batch information 
 		.updateStateByKey((nums, current) -> {
 
 			Average average = current.or(new Average());
@@ -53,7 +51,8 @@ public class G2Q2Main {
 		.mapToPair(x -> x.swap())
 		.transformToPair(x -> x.sortByKey(true))
 		.mapToPair(x -> x.swap())
-		
+
+		// Print
 		.print(1000);
 
 		ctx.run();

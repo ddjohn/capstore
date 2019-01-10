@@ -17,8 +17,11 @@ public class G2Q4Main {
 		ctx.createStream("cloudcourse")
 
 		.flatMapToPair(x -> {
+			
+			// Parse input data
 			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
 
+			// Build list with (origin_dest, arrdelay)
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.ARRDELAY && 
 					tokens[DataSet.ORIGIN  ].isEmpty() == false && 
@@ -30,7 +33,7 @@ public class G2Q4Main {
 			return list.iterator();
 		})
 
-		// Remember the keys 
+		// Update the average class with batch information 
 		.updateStateByKey((nums, current) -> {
 
 			Average average = current.or(new Average());
@@ -41,12 +44,15 @@ public class G2Q4Main {
 			return Optional.of(average);
 		})
 
+		// FIlter out fields of interest
 		.filter(x -> {		
 			return Arrays.asList(FILTER_ROUTES).contains(x._1);
 		})
 		
+		// Sort
 		.transformToPair(x -> x.sortByKey(true))
 
+		// Print
 		.print(1000);
 
 		ctx.run();

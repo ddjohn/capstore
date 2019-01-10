@@ -32,7 +32,11 @@ public class G2Q1Main {
 
 	public static final void main(String[] args) throws InterruptedException {
 
-		//Cassandra cassandra = new Cassandra("c");
+		//JavaRDDstring cassandraRdd = CassandraJavaUtil.javaFunctions(sc)
+		 //       .cassandraTable("my_keyspace", "my_table", .mapColumnTo(String.class))
+		  //      .select("my_column");
+		
+	//Cassandra cassandra = new Cassandra("c");
 		//cassandra.query(CREATE_TABLE);
 		//cassandra.close();
 

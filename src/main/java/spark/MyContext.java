@@ -46,7 +46,7 @@ public class MyContext extends JavaStreamingContext {
 
 	public void run() throws InterruptedException {
 		this.start();
-		this.awaitTerminationOrTimeout(1500000); //ctx.awaitTermination();
+		this.awaitTerminationOrTimeout(15000000); //ctx.awaitTermination();
 		this.stop(true, true); //ctx.stop();
 	}
 }

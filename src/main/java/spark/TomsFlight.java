@@ -9,15 +9,19 @@ public class TomsFlight implements Serializable {
 	public String dest;
 	public String depDate;
 	public String depTime;
+	public String flight;
+	public Float delay;
 	
-	public TomsFlight(String origin, String dest, String depDate, String depTime) {
+	public TomsFlight(String origin, String dest, String depDate, String depTime, String flight, Float delay) {
 		this.origin  = origin;
 		this.dest    = dest;
 		this.depDate = depDate;
 		this.depTime = depTime;
+		this.delay = delay;
+		this.flight = flight;
 	}
 
 	public String toString() {
-		return "origin:" + origin + " dest:" + dest + " departure: " + depDate + " " + depTime;
+		return "[" + origin + "->" + dest + ": " + depDate + " " + depTime + " " + flight + "]";
 	}
 }
