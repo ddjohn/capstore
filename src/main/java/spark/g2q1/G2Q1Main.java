@@ -1,4 +1,4 @@
-package spark;
+package spark.g2q1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,29 +22,21 @@ import scala.Tuple2;
 import scala.collection.IndexedSeq;
 import scala.collection.generic.IndexedSeqFactory;
 import scala.collection.immutable.Map;
+import spark.Average;
+import spark.MyContext;
+import spark.g1q3.G1Q3Database;
 import cloudcourse.globals.DataSet;
 
 public class G2Q1Main {
-	private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS c.g1q1 (PRIMARY KEY(origin, carrier), origin text, carrier text, delay double);";
-	private static final String UPDATE_STMT = "UPDATE c.g1q1 SET delay = ? WHERE origin = ? AND carrier = ?;";
-	
 	private static final String[] FILTER = {"CMI", "BWI", "MIA", "LAX", "IAH", "SFO"};
 
 	public static final void main(String[] args) throws InterruptedException {
-
-		//JavaRDDstring cassandraRdd = CassandraJavaUtil.javaFunctions(sc)
-		 //       .cassandraTable("my_keyspace", "my_table", .mapColumnTo(String.class))
-		  //      .select("my_column");
-		
-	//Cassandra cassandra = new Cassandra("c");
-		//cassandra.query(CREATE_TABLE);
-		//cassandra.close();
-
 		MyContext ctx = new MyContext();
+
 		ctx.createStream("cloudcourse")
 
 		.flatMapToPair(x -> {
-			
+
 			// Parse input data
 			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
 
@@ -54,7 +46,7 @@ public class G2Q1Main {
 					tokens[DataSet.ORIGIN       ].isEmpty() == false && 
 					tokens[DataSet.UNIQUECARRIER].isEmpty() == false && 
 					tokens[DataSet.DEPDELAY     ].isEmpty() == false) {
-				
+
 				list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.UNIQUECARRIER], Float.parseFloat(tokens[DataSet.DEPDELAY])));
 			}
 			return list.iterator();
@@ -62,7 +54,7 @@ public class G2Q1Main {
 
 		// Update the average class with batch information 
 		.updateStateByKey((nums, current) -> {
-			
+
 			Average average = current.or(new Average());
 			for(float i : nums) {
 				average.count++;
@@ -84,49 +76,22 @@ public class G2Q1Main {
 		// Sort
 		.transformToPair(x -> x.sortByKey(true))
 
-		//		.foreachRDD(x -> {
-			/*
-			System.out.println(x);
-			Object cassandraRdd = CassandraJavaUtil.javaFunctions(x)
-					 .cassandraTable("c", "g1q1", CassandraJavaUtil.mapColumnTo(String.class),
-							 CassandraJavaUtil.select("my_column"));
-			
-			CassandraJavaUtil.javaFunctions(x).saveToCassandra("c", "g1q1", 
-					new RowWriterFactory<Tuple2<String, Average>>() {
+		.map(x -> {
+			String[] tokens = x._1.split("_");
+			return new G2Q1Database(tokens[0], tokens[1], x._2.average());
+		})
 
-						@Override
-						public RowWriter<Tuple2<String, Average>> rowWriter(TableDef table, IndexedSeq<ColumnRef> arg1) {
-							System.out.println("table: " + table);
-							System.out.println("table: " + arg1);
+		.foreachRDD(rdd -> {
 
-							return null;
-						}}, new ColumnSelector() {
-
-							@Override
-							public Map<String, String> aliases() {
-								System.out.println("aliases");
-								return null;
-							}
-
-							@Override
-							public IndexedSeq<ColumnRef> selectFrom(TableDef table) {
-								System.out.println("ttable:" + table);
-								IndexedSeq<ColumnRef> a = new IndexedSeqFactory();
-								return null;
-							}});
-			*/
-/*			x.foreach(y -> {
-				String[] cols = y._1.split("_");
-				Cassandra c = new Cassandra("c");
-				PreparedStatement s = c.prepareStatement(UPDATE_STMT);
-				c.bind(s, Double.parseDouble(y._2.toString()), cols[0], cols[1]);		
-				c.close();
-			});
+			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
+					"cloudcourse", 
+					"g2q1", 
+					CassandraJavaUtil.mapToRow(G2Q1Database.class))
+			.saveToCassandra();
 		});
-*/		
-		
+
 		// Print
-		.print(1000);
+		//.print(1000);
 
 		ctx.run();
 		ctx.close();

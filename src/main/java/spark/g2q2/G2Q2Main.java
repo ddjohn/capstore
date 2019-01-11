@@ -1,20 +1,17 @@
-package spark;
+package spark.g2q2;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.spark.SparkConf;
-import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.Optional;
+import com.datastax.spark.connector.japi.CassandraJavaUtil;
 import scala.Tuple2;
+import spark.Average;
+import spark.MyContext;
 import cloudcourse.globals.DataSet;
 
 public class G2Q2Main {
 
 	public static final void main(String[] args) throws InterruptedException {
-		
-		SparkConf conf = new SparkConf().setAppName( "My application");
-		SparkContext sc = new SparkContext(conf);
 		
 		MyContext ctx = new MyContext();
 
@@ -52,8 +49,23 @@ public class G2Q2Main {
 		.transformToPair(x -> x.sortByKey(true))
 		.mapToPair(x -> x.swap())
 
+
+		.map(x -> {
+			String[] tokens = x._1.split("_");
+			return new G2Q2Database(tokens[0], tokens[1], x._2.average());
+		})
+
+		.foreachRDD(rdd -> {
+
+			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
+					"cloudcourse", 
+					"g2q2", 
+					CassandraJavaUtil.mapToRow(G2Q2Database.class))
+			.saveToCassandra();
+		});
+
 		// Print
-		.print(1000);
+		//.print(1000);
 
 		ctx.run();
 		ctx.close();
