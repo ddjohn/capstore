@@ -7,6 +7,9 @@ import java.util.List;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
+
+import com.datastax.spark.connector.japi.CassandraJavaUtil;
+
 import scala.Tuple2;
 import cloudcourse.globals.DataSet;
 
@@ -91,9 +94,17 @@ public class G3Q2Main {
 
 		.transformToPair(x -> x.sortByKey())
 
-		.foreachRDD(x -> {
+		.foreachRDD(rdd -> {
+/*
+			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
+					"cloudcourse", 
+					"g3q2", 
+					CassandraJavaUtil.mapToRow(Person.class)).saveToCassandra();
+
+	*/		
+			
 			try {
-				Tuple2<Float, TomsFlight[]> flights = x.first();
+				Tuple2<Float, TomsFlight[]> flights = rdd.first();
 				System.out.println("Flight 1: " + flights._2[0]);
 				System.out.println("Flight 2: " + flights._2[1]);
 				System.out.println("Total delay: " + flights._1);

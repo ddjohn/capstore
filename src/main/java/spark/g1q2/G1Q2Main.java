@@ -1,10 +1,15 @@
-package spark;
+package spark.g1q2;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.spark.api.java.Optional;
-import scala.Tuple2;
 
+import com.datastax.spark.connector.japi.CassandraJavaUtil;
+
+import scala.Tuple2;
+import spark.Average;
+import spark.MyContext;
+import spark.g1q1.G1Q1Database;
 import cloudcourse.globals.DataSet;
 
 public class G1Q2Main {
@@ -46,8 +51,19 @@ public class G1Q2Main {
 		.transformToPair(x -> x.sortByKey(true))
 		.mapToPair(x -> x.swap())
 		
+		.map(x -> new G1Q2Database(x._1, x._2.average()))
+
+		.foreachRDD(rdd -> {
+			
+			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
+					"cloudcourse", 
+					"g1q2", 
+					CassandraJavaUtil.mapToRow(G1Q2Database.class))
+			.saveToCassandra();
+		});
+		
 		// Print top 10
-		.print();
+		//.print();
 
 		ctx.run();
 		ctx.close();

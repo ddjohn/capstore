@@ -44,8 +44,11 @@ public class G2Q1Main {
 		ctx.createStream("cloudcourse")
 
 		.flatMapToPair(x -> {
+			
+			// Parse input data
 			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
 
+			// Build list with (origin_carrier, depdelay)
 			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
 			if(tokens.length > DataSet.DEPDELAY && 
 					tokens[DataSet.ORIGIN       ].isEmpty() == false && 
@@ -57,7 +60,7 @@ public class G2Q1Main {
 			return list.iterator();
 		})
 
-		// Remember the keys 
+		// Update the average class with batch information 
 		.updateStateByKey((nums, current) -> {
 			
 			Average average = current.or(new Average());
@@ -68,10 +71,7 @@ public class G2Q1Main {
 			return Optional.of(average);
 		})
 
-		// Sort by swapping values to keys and back
-		//.mapToPair(x -> x.swap())
-		//.mapToPair(x -> x.swap())
-
+		// Filter out fields of interest
 		.filter(x -> {
 			for(String f : FILTER) {
 				if(x._1.startsWith(f)) {
@@ -81,6 +81,7 @@ public class G2Q1Main {
 			return false;
 		})
 
+		// Sort
 		.transformToPair(x -> x.sortByKey(true))
 
 		//		.foreachRDD(x -> {
@@ -122,8 +123,9 @@ public class G2Q1Main {
 				c.close();
 			});
 		});
-*/		// Print top 10
-		//.print(Integer.MAX_VALUE);
+*/		
+		
+		// Print
 		.print(1000);
 
 		ctx.run();

@@ -8,15 +8,18 @@ public class Average implements Serializable, Comparable<Average> {
 
 	public float sum = 0f;
 	public int count = 0;
-	
-	public String toString() {
+
+	public float average() {
 		if(count == 0) {
-			return "-1";
-			
+			return -1;
+
 		} else {
-			return "" + sum / count;
-			
+			return sum / count;		
 		}
+	}
+
+	public String toString() {
+		return "" + average();		
 	}
 
 	@Override
@@ -26,7 +29,7 @@ public class Average implements Serializable, Comparable<Average> {
 		} else {
 			float me = sum/count;
 			float him = o.sum/o.count;
-			
+
 			if(me == him) {
 				return 0;
 			} else if(me > him) {
