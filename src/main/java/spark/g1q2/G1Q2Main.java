@@ -3,13 +3,10 @@ package spark.g1q2;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.spark.api.java.Optional;
-
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
-
 import scala.Tuple2;
 import spark.Average;
 import spark.MyContext;
-import spark.g1q1.G1Q1Database;
 import cloudcourse.globals.DataSet;
 
 public class G1Q2Main {
