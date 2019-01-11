@@ -1,10 +1,16 @@
-package spark;
+package spark.g2q4;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.spark.api.java.Optional;
+
+import com.datastax.spark.connector.japi.CassandraJavaUtil;
+
 import scala.Tuple2;
+import spark.g2q2.G2Q2Database;
+import spark.globals.Average;
+import spark.globals.MyContext;
 import cloudcourse.globals.DataSet;
 
 public class G2Q4Main {
@@ -52,8 +58,22 @@ public class G2Q4Main {
 		// Sort
 		.transformToPair(x -> x.sortByKey(true))
 
+		.map(x -> {
+			String[] tokens = x._1.split("_");
+			return new G2Q4Database(tokens[0], tokens[1], x._2.average());
+		})
+
+		.foreachRDD(rdd -> {
+
+			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
+					"cloudcourse", 
+					"g2q4", 
+					CassandraJavaUtil.mapToRow(G2Q4Database.class))
+			.saveToCassandra();
+		});
+
 		// Print
-		.print(1000);
+		//.print(1000);
 
 		ctx.run();
 		ctx.close();

@@ -1,4 +1,4 @@
-package spark;
+package spark.g3q2;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import org.apache.spark.streaming.api.java.JavaPairDStream;
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
 
 import scala.Tuple2;
+import spark.globals.MyContext;
 import cloudcourse.globals.DataSet;
 
 public class G3Q2Main {

@@ -1,0 +1,7 @@
+
+CREATE TABLE IF NOT EXISTS cloudcourse.g2q3 (
+carrier text,
+origin text,
+dest text,
+delay float,
+PRIMARY KEY((carrier, origin, dest), delay));

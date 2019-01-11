@@ -1,4 +1,4 @@
-package spark;
+package spark.globals;
 
 import java.util.HashMap;
 import java.util.HashSet;

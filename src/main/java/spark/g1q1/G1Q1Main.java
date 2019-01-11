@@ -6,7 +6,7 @@ import org.apache.spark.api.java.Optional;
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
 import cloudcourse.globals.DataSet;
 import scala.Tuple2;
-import spark.MyContext;
+import spark.globals.MyContext;
 
 public class G1Q1Main {
 	

@@ -22,9 +22,9 @@ import scala.Tuple2;
 import scala.collection.IndexedSeq;
 import scala.collection.generic.IndexedSeqFactory;
 import scala.collection.immutable.Map;
-import spark.Average;
-import spark.MyContext;
 import spark.g1q3.G1Q3Database;
+import spark.globals.Average;
+import spark.globals.MyContext;
 import cloudcourse.globals.DataSet;
 
 public class G2Q1Main {

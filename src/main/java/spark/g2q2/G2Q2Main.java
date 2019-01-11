@@ -5,14 +5,14 @@ import java.util.List;
 import org.apache.spark.api.java.Optional;
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
 import scala.Tuple2;
-import spark.Average;
-import spark.MyContext;
+import spark.globals.Average;
+import spark.globals.MyContext;
 import cloudcourse.globals.DataSet;
 
 public class G2Q2Main {
 
 	public static final void main(String[] args) throws InterruptedException {
-		
+
 		MyContext ctx = new MyContext();
 
 		ctx.createStream("cloudcourse")
@@ -48,7 +48,6 @@ public class G2Q2Main {
 		.mapToPair(x -> x.swap())
 		.transformToPair(x -> x.sortByKey(true))
 		.mapToPair(x -> x.swap())
-
 
 		.map(x -> {
 			String[] tokens = x._1.split("_");

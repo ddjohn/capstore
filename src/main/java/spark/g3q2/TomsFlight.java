@@ -1,4 +1,4 @@
-package spark;
+package spark.g3q2;
 
 import java.io.Serializable;
 

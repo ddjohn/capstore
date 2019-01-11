@@ -7,9 +7,9 @@ import org.apache.spark.api.java.Optional;
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
 
 import scala.Tuple2;
-import spark.Average;
-import spark.MyContext;
 import spark.g1q2.G1Q2Database;
+import spark.globals.Average;
+import spark.globals.MyContext;
 import cloudcourse.globals.DataSet;
 
 public class G1Q3Main {
