@@ -5,17 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 import org.apache.spark.api.java.Optional;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
-
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
-
 import scala.Tuple2;
-import spark.g2q2.G2Q2Database;
 import spark.globals.Average;
 import spark.globals.MyContext;
 import cloudcourse.globals.DataSet;
 
 public class G2Q4Main {
-	private static final String[] FILTER_ROUTES = {"CMI_ORD", "IND_CMH", "DFW_IAH", "LAX_SFO", "JFK_LAX", "ATL_PHX"};
+	private static final String[] FILTER = {"CMI_ORD", "IND_CMH", "DFW_IAH", "LAX_SFO", "JFK_LAX", "ATL_PHX"};
 	
 	public static final void main(String[] args) throws InterruptedException {
 
@@ -54,7 +51,7 @@ public class G2Q4Main {
 		
 		// Filter out fields of interest
 		stream.filter(x -> {		
-			return Arrays.asList(FILTER_ROUTES).contains(x._1);
+			return Arrays.asList(FILTER).contains(x._1);
 		})
 		
 		// Sort

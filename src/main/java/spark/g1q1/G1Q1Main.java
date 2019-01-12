@@ -12,6 +12,7 @@ import spark.globals.MyContext;
 public class G1Q1Main {
 
 	public static final void main(String[] args) throws InterruptedException {
+		
 		MyContext ctx = new MyContext();
 
 		JavaPairDStream<String, Long> stream = ctx.createStream("cloudcourse")

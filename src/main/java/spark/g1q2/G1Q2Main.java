@@ -63,8 +63,7 @@ public class G1Q2Main {
 		.foreachRDD(rdd -> {
 
 			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
-					"cloudcourse", 
-					"g1q2", 
+					"cloudcourse", "g1q2", 
 					CassandraJavaUtil.mapToRow(G1Q2Database.class))
 			.saveToCassandra();
 		});
