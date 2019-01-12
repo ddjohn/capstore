@@ -32,7 +32,7 @@ public class G2Q3Main {
 							tokens[DataSet.DEST         ].isEmpty() == false && 
 							tokens[DataSet.ARRDELAY     ].isEmpty() == false) {
 
-						list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST] + "_" + tokens[DataSet.UNIQUECARRIER], Float.parseFloat(tokens[DataSet.ARRDELAY])));
+							list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST] + "_" + tokens[DataSet.UNIQUECARRIER], Float.parseFloat(tokens[DataSet.ARRDELAY])));
 					}
 					return list.iterator();
 				})

@@ -46,6 +46,7 @@
 (LAX_SFO_XE,13.6)
 
 
+cqlsh:cloudcourse> select * from cloudcourse.g2q2;
 
  origin | dest | delay
 --------+------+----------

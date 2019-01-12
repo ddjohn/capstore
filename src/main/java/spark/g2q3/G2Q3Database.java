@@ -6,7 +6,7 @@ public class G2Q3Database {
 	private String dest;
 	private float delay;
 	
-	public G2Q3Database(String carrier, String origin, String dest, float delay) {
+	public G2Q3Database(String origin, String dest, String carrier, float delay) {
 		this.carrier = carrier;
 		this.origin = origin;
 		this.dest = dest;

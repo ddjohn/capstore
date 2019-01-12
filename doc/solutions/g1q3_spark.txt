@@ -6,6 +6,7 @@
 (4,9.107578)
 (5,9.736546)
 
+
 cqlsh> select * from cloudcourse.g1q3;
 
  day | delay

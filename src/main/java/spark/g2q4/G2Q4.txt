@@ -3,4 +3,4 @@ CREATE TABLE IF NOT EXISTS cloudcourse.g2q4 (
 origin text,
 dest text,
 delay float,
-PRIMARY KEY((origin, dest), delay));
+PRIMARY KEY((origin, dest)));
