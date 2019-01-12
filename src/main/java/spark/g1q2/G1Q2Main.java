@@ -44,15 +44,16 @@ public class G1Q2Main {
 						average.sum += i;
 					}
 					return Optional.of(average);
-				})
+				});
 
-				// Sort by swapping values to keys and back
-				.mapToPair(x -> x.swap())
-				.transformToPair(x -> x.sortByKey(true))
-				.mapToPair(x -> x.swap());
 
-		// Print top 10
+		// Sort by swapping values to keys and back
 		stream
+		.mapToPair(x -> x.swap())
+		.transformToPair(x -> x.sortByKey(true))
+		.mapToPair(x -> x.swap())
+		
+		// Print top 10
 		.print();
 
 		// Save to Cassandra

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.spark.api.java.Optional;
+import org.apache.spark.streaming.api.java.JavaPairDStream;
 
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
 
@@ -20,7 +21,7 @@ public class G2Q4Main {
 
 		MyContext ctx = new MyContext();
 		
-		ctx.createStream("cloudcourse")
+		JavaPairDStream<String, Average> stream = ctx.createStream("cloudcourse")
 
 		.flatMapToPair(x -> {
 			
@@ -48,32 +49,33 @@ public class G2Q4Main {
 				average.sum += i;
 			}
 			return Optional.of(average);
-		})
+		});
 
-		// FIlter out fields of interest
-		.filter(x -> {		
+		
+		// Filter out fields of interest
+		stream.filter(x -> {		
 			return Arrays.asList(FILTER_ROUTES).contains(x._1);
 		})
 		
 		// Sort
 		.transformToPair(x -> x.sortByKey(true))
 
+		// Print
+		.print(1000);
+
+		// Save to Cassandra
+		stream
 		.map(x -> {
 			String[] tokens = x._1.split("_");
 			return new G2Q4Database(tokens[0], tokens[1], x._2.average());
 		})
 
 		.foreachRDD(rdd -> {
-
 			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
-					"cloudcourse", 
-					"g2q4", 
+					"cloudcourse", "g2q4", 
 					CassandraJavaUtil.mapToRow(G2Q4Database.class))
 			.saveToCassandra();
 		});
-
-		// Print
-		//.print(1000);
 
 		ctx.run();
 		ctx.close();

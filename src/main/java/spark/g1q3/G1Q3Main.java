@@ -43,15 +43,15 @@ public class G1Q3Main {
 						average.sum += i;
 					}
 					return Optional.of(average);
-				})
+				});
 
-				// Sort by swapping values to keys and back
-				.mapToPair(x -> x.swap())
-				.transformToPair(x -> x.sortByKey(true))
-				.mapToPair(x -> x.swap());
+		// Sort by swapping values to keys and back
+		stream
+		.mapToPair(x -> x.swap())
+		.transformToPair(x -> x.sortByKey(true))
+		.mapToPair(x -> x.swap())
 
 		// Print top 10
-		stream
 		.print();
 
 		// Save to Cassandra
@@ -60,8 +60,7 @@ public class G1Q3Main {
 
 		.foreachRDD(rdd -> {
 			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
-					"cloudcourse", 
-					"g1q3", 
+					"cloudcourse", "g1q3", 
 					CassandraJavaUtil.mapToRow(G1Q3Database.class))
 			.saveToCassandra();
 		});

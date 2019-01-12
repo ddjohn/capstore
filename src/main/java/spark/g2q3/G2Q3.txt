@@ -4,4 +4,4 @@ carrier text,
 origin text,
 dest text,
 delay float,
-PRIMARY KEY((carrier, origin, dest), delay));
+PRIMARY KEY((carrier, origin, dest)));

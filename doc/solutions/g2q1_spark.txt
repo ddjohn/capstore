@@ -120,3 +120,111 @@
 (SFO_WN,11.902339)
 (SFO_XE,11.629087)
 (SFO_YV,12.677778)
+
+
+cqlsh:cloudcourse> select * from cloudcourse.g2q1;
+
+ origin | carrier | delay
+--------+---------+-----------
+    IAH |      YV |  11.58833
+    GST |      AS |   7.31378
+    SGF |      CO |   4.10989
+    DRO |      AA |   9.81287
+    MSY |      XE |   5.83947
+    LGB |      AS |   4.77774
+    BPT |      MQ |   3.26462
+    SHV |      XE |   4.03292
+    SAV |      OO |  15.40764
+    GSO |      UA |   8.48226
+    FWA |      DH |   4.59044
+    LGB |      UA |   8.93013
+    PIA |      OO |   12.5443
+    HDN |      TW |  11.66667
+    HDN |      HP |  12.78182
+    PIT |      DL |   4.58755
+    IAD |      DH |   8.53548
+    LAX |      HP |   7.82632
+    ALB |      EA |   8.79045
+    SFO |      FL |  12.42038
+    SLC |      US |   5.57891
+    TVC |      MQ |  10.85642
+    MLI |      MQ |  10.07371
+    GRR |      NW |   3.72774
+    ABQ |      TW |   3.80844
+    LIH |      UA |   3.37213
+    MYR |      FL |  15.51697
+    CAE |      EV |   14.0094
+    CRP |      EV |  13.57514
+    CVG |      CO |     9.836
+    LNK |      HP |   4.13495
+    GEG |      EV |    6.4188
+    PIT |      9E |   7.45442
+    BIL |      OO |   3.12734
+    CMH |      HP |  10.99529
+    SAT |      DL |   6.97099
+    BUF |      NW |   2.29073
+    PVD |      OO |  26.05882
+    CRW |      DH |   5.40371
+    OMA |      OH |   4.66827
+    PBI |      WN |   6.80319
+    COS |      AA |   5.06545
+    FSM |      EV |  11.19922
+    VIS |      OO | -0.252847
+    TUP |      EV |  11.10991
+    AZO |      EV |  14.11765
+    PWM |      YV |    13.408
+    SNA |      US |   5.50588
+    IAD |      MQ |  11.25247
+    PDX |      WN |   8.43451
+    AVL |      YV |  -1.88235
+    BTV |      UA |   8.22813
+    SHV |      CO |       0.1
+    SHV |      AA |   3.29175
+    TYS |      XE |   9.01337
+    ABQ |      YV |  -0.87931
+    SWF |      FL |    6.7599
+    ORD |      AA |  11.35213
+    JAX |      DL |   7.36277
+    PIA |      NW |       0.4
+    TUS |      HP |   5.42878
+    DTW |      NW |   9.25497
+    ELP |      XE |    3.2959
+    BGM |      9E |   8.80588
+    MOB |      NW |  0.611111
+    CRP |      MQ |   7.71843
+    SYR |      AA |   3.30387
+    PNS |      XE |   3.72914
+    ICT |      US |   3.35657
+    SJU |      AA |   8.03804
+    MEM |      OH |   7.07428
+    DAL |      WN |   8.44354
+    SFO |      HP |   9.72909
+    HLN |      OO | -0.076102
+    LGA |      DH |    8.3431
+    BUR |      CO |   3.49216
+    DUT |      AS |  15.22716
+    LAS |      DH | -0.112903
+    ABQ |      XE |   5.66998
+    IAH |      CO |   7.97636
+    MCO |      F9 |   2.31812
+    PFN |      EV |  17.13944
+    EYW |      EA |  0.432099
+    RST |      MQ |   9.63937
+    FLL |      EA |   9.91846
+    SFO |      WN |  12.53153
+    OGG |      CO |  0.099585
+    OMA |      DL |   5.23063
+    OAK |      XE |  0.983333
+    BGM |      EV |  18.65413
+    AZO |      OH |   8.56089
+    SNA |      AA |   5.88157
+    SCE |      9E |   9.02247
+    HSV |      MQ |   7.53309
+    LAS |      NW |   5.82412
+    IAH |      US |   5.12246
+    BUF |      DH |   7.16411
+    HSV |      AA |   1.79928
+    MKE |      NW |    4.0574
+    ITH |      PI |    1.6587
+
+(100 rows)

@@ -12,7 +12,7 @@
 
 
 
-cqlsh:cloudcourse> select * from cloudcourse.g1q2;                                                                                                   [18/1876]
+cqlsh:cloudcourse> select * from cloudcourse.g1q2;
                                                                                                                                                               
  carrier | delay
 ---------+----------
@@ -47,4 +47,3 @@ cqlsh:cloudcourse> select * from cloudcourse.g1q2;                              
       MQ |  8.81898
 
 (29 rows)
-

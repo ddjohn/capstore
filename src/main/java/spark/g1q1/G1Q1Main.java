@@ -43,15 +43,16 @@ public class G1Q1Main {
 						sum += i;
 					}
 					return Optional.of(sum);
-				})
+				});
 
-				// Sort by swapping values to keys and back
-				.mapToPair(x -> x.swap())
-				.transformToPair(x -> x.sortByKey(false))
-				.mapToPair(x -> x.swap());
-
+		// Sort by swapping values to keys and back
+		stream		
+		.mapToPair(x -> x.swap())
+		.transformToPair(x -> x.sortByKey(false))
+		.mapToPair(x -> x.swap())
+		
 		// Print top 10
-		stream.print(10);
+		.print(10);
 
 		// Save to Cassandra
 		stream
