@@ -1,5 +1,4 @@
 
 CREATE TABLE IF NOT EXISTS cloudcourse.g1q2 (
-carrier text,
-delay float,
-PRIMARY KEY((carrier), delay));
+carrier text PRIMARY KEY,
+delay float);

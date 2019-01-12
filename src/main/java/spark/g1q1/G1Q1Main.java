@@ -3,64 +3,66 @@ package spark.g1q1;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.spark.api.java.Optional;
+import org.apache.spark.streaming.api.java.JavaPairDStream;
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
 import cloudcourse.globals.DataSet;
 import scala.Tuple2;
 import spark.globals.MyContext;
 
 public class G1Q1Main {
-	
+
 	public static final void main(String[] args) throws InterruptedException {
 		MyContext ctx = new MyContext();
 
-		ctx.createStream("cloudcourse")
+		JavaPairDStream<String, Long> stream = ctx.createStream("cloudcourse")
+				
+				.flatMapToPair(x -> {
+					
+					// Parse the input data
+					String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
 
-		.flatMapToPair(x -> {
+					// Build a list with (DEST,1) and (ORIGIN,1)
+					List<Tuple2<String, Long>> list = new ArrayList<Tuple2<String, Long>>();
+					if(tokens.length > DataSet.ORIGIN &&
+							tokens[DataSet.ORIGIN].isEmpty() == false &&
+							tokens[DataSet.DEST  ].isEmpty() == false) {
 
-			// Parse the input data
-			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
+						list.add(new Tuple2<String, Long>(tokens[DataSet.ORIGIN], 1L));
+						list.add(new Tuple2<String, Long>(tokens[DataSet.DEST], 1L));
+					}
+					return list.iterator();
+				})
 
-			// Build a list with (DEST,1) and (ORIGIN,1)
-			List<Tuple2<String, Long>> list = new ArrayList<Tuple2<String, Long>>();
-			if(tokens.length > DataSet.ORIGIN &&
-					tokens[DataSet.ORIGIN].isEmpty() == false &&
-					tokens[DataSet.DEST  ].isEmpty() == false) {
+				// Sum by key
+				.reduceByKey((i1, i2) -> i1 + i2)
 
-				list.add(new Tuple2<String, Long>(tokens[DataSet.ORIGIN], 1L));
-				list.add(new Tuple2<String, Long>(tokens[DataSet.DEST], 1L));
-			}
-			return list.iterator();
-		})
+				// Remember the keys
+				.updateStateByKey((nums, current) -> {
+					long sum = current.or(0L); 
+					for(long i : nums) {
+						sum += i;
+					}
+					return Optional.of(sum);
+				})
 
-		// Sum by key
-		.reduceByKey((i1, i2) -> i1 + i2)
+				// Sort by swapping values to keys and back
+				.mapToPair(x -> x.swap())
+				.transformToPair(x -> x.sortByKey(false))
+				.mapToPair(x -> x.swap());
 
-		// Remember the keys 
-		.updateStateByKey((nums, current) -> {
-			long sum = current.or(0L); 
-			for(long i : nums) {
-				sum += i;
-			}
-			return Optional.of(sum);
-		})
-		
-		// Sort by swapping values to keys and back
-		.mapToPair(x -> x.swap())
-		.transformToPair(x -> x.sortByKey(false))
-		.mapToPair(x -> x.swap())
-		
+		// Print top 10
+		stream.print(10);
+
+		// Save to Cassandra
+		stream
 		.map(x -> new G1Q1Database(x._1, x._2))
 
 		.foreachRDD(rdd -> {
-			
 			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
-					"cloudcourse", 
-					"g1q1", 
+					"cloudcourse", "g1q1", 
 					CassandraJavaUtil.mapToRow(G1Q1Database.class))
 			.saveToCassandra();
 		});
-		// Print top 10
-		//.print(10);
 
 		ctx.run();
 		ctx.close();

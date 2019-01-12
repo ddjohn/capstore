@@ -1,5 +1,4 @@
 
 CREATE TABLE IF NOT EXISTS cloudcourse.g1q1 (
-airport text,
-flights int,
-PRIMARY KEY((airport), flights));
+airport text PRIMARY KEY,
+flights int);
