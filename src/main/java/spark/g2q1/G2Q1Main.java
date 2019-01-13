@@ -5,10 +5,11 @@ import java.util.List;
 import org.apache.spark.api.java.Optional;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
+
+import mapreduce.globals.DataSet;
 import scala.Tuple2;
 import spark.globals.Average;
 import spark.globals.MyContext;
-import cloudcourse.globals.DataSet;
 
 public class G2Q1Main {
 	private static final String[] FILTER = {"CMI", "BWI", "MIA", "LAX", "IAH", "SFO"};

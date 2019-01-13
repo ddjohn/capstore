@@ -5,7 +5,8 @@ import java.util.List;
 import org.apache.spark.api.java.Optional;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
-import cloudcourse.globals.DataSet;
+
+import mapreduce.globals.DataSet;
 import scala.Tuple2;
 import spark.globals.MyContext;
 
