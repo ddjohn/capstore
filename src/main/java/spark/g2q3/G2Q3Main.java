@@ -12,7 +12,11 @@ import spark.globals.Average;
 import spark.globals.MyContext;
 
 public class G2Q3Main {
-	private static final String[] FILTER = {"CMI_ORD", "IND_CMH", "DFW_IAH", "LAX_SFO", "JFK_LAX", "ATL_PHX"};
+
+	private static final String[] FILTER = {
+			//"CMI_ORD", "IND_CMH", "DFW_IAH", "LAX_SFO", "JFK_LAX", "ATL_PHX",
+			"LGA_BOS", "BOS_LGA", "OKC_DFW", "MSP_ATL"
+	};
 
 	public static final void main(String[] args) throws InterruptedException {
 

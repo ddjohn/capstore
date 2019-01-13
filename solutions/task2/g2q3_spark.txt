@@ -1,150 +1,136 @@
-(ATL_PHX_DL,10.44285)
-(ATL_PHX_EA,7.679208)
-(ATL_PHX_FL,11.4259815)
-(ATL_PHX_HP,7.0744276)
-(ATL_PHX_US,5.829897)
-(CMI_ORD_MQ,11.163199)
-(DFW_IAH_AA,8.882963)
-(DFW_IAH_CO,7.07279)
-(DFW_IAH_DL,8.897161)
-(DFW_IAH_EV,5.149289)
-(DFW_IAH_MQ,7.986559)
-(DFW_IAH_OO,5.867647)
-(DFW_IAH_UA,4.703704)
-(DFW_IAH_XE,6.9205923)
-(IND_CMH_CO,-2.2737536)
-(IND_CMH_DL,9.674418)
-(IND_CMH_EA,15.740741)
-(IND_CMH_HP,10.716981)
-(IND_CMH_NW,5.07947)
-(IND_CMH_US,5.388316)
-(JFK_LAX_AA,5.397815)
-(JFK_LAX_DL,7.5113635)
-(JFK_LAX_HP,1.4277778)
-(JFK_LAX_PA (1),5.0740743)
-(JFK_LAX_TW,11.37634)
-(JFK_LAX_UA,2.42465)
-(LAX_SFO_AA,6.266533)
-(LAX_SFO_AS,11.666297)
-(LAX_SFO_CO,11.624257)
-(LAX_SFO_DL,12.815016)
-(LAX_SFO_EA,22.827587)
-(LAX_SFO_EV,22.490566)
-(LAX_SFO_F9,1.1007371)
-(LAX_SFO_MQ,6.695652)
-(LAX_SFO_NW,6.6494846)
-(LAX_SFO_OO,170.0)
-(LAX_SFO_PA (1),13.496422)
-(LAX_SFO_TW,17.890282)
-(LAX_SFO_TZ,-3.4285715)
-(LAX_SFO_UA,10.237988)
-(LAX_SFO_US,10.09499)
-(LAX_SFO_WN,6.702783)
-(LAX_SFO_XE,6.7299576)
+(BOS_LGA_AA,30.75)
+(BOS_LGA_DL,1.9165496)
+(BOS_LGA_EA,9.592056)
+(BOS_LGA_MQ,13.341826)
+(BOS_LGA_NW,13.603498)
+(BOS_LGA_PA (1),4.6670313)
+(BOS_LGA_US,1.4734309)
+(LGA_BOS_AA,28.5)
+(LGA_BOS_DL,1.5572356)
+(LGA_BOS_EA,4.9812846)
+(LGA_BOS_MQ,9.834104)
+(LGA_BOS_NW,14.370588)
+(LGA_BOS_PA (1),-1.1182573)
+(LGA_BOS_US,-2.7062635)
+(MSP_ATL_DL,6.1975255)
+(MSP_ATL_EA,4.2336063)
+(MSP_ATL_EV,9.758089)
+(MSP_ATL_FL,7.343901)
+(MSP_ATL_NW,7.034014)
+(MSP_ATL_OH,13.512954)
+(MSP_ATL_OO,3.2532258)
+(OKC_DFW_AA,4.657885)
+(OKC_DFW_DL,6.4270606)
+(OKC_DFW_EV,3.0120664)
+(OKC_DFW_MQ,4.1349187)
+(OKC_DFW_OH,41.0)
+(OKC_DFW_OO,13.722513)
+(OKC_DFW_TW,-0.17094018)
 
-cqlsh:cloudcourse> select * from cloudcourse.g1q2;
+cqlsh:cloudcourse> select * from cloudcourse.g2q3;
 
- carrier | origin | dest   | delay
----------+--------+--------+-----------
-     SAN |    MCI |     US |   1.69667
-     ORD |    CVG |     OH |  14.70326
-     BDL |    DEN |     CO |  -7.53125
-     RSW |    CMH |     US |  -2.11111
-      WN |    SEA |    DEN |  -1.11668
-      XE |    LAX |    SLC |   3.84677
-     SJC |    LAX |     AS |   3.47692
-      US |    JAX |    MLB |   7.43342
-      9E |    MSP |    SBN |    7.3702
-     PBI |    BNA |     AA |   4.13846
-      OO |    ORD |    BZN |  12.91961
-     ORD |    CWA |     YV |  25.22368
-      US |    MCO |    LAS |   2.10603
-      HP |    LAS |    ONT |   3.84217
-     CVG |    LAS |     DL |    6.5789
-     SJC |    LGB |     AA |  0.592635
-      EV |    MCO |    MSY |  -5.68571
-      AA |    BNA |    BWI |   1.56522
-     HPN |    DTW |     9E |   8.91746
-     CLE |    PHX |     US |    5.8049
-      UA |    MSY |    IAD |   4.51099
-      OH |    XNA |    CVG |   1.24415
-     GSP |    CHS |     US |   4.36364
-      DL |    ELP |    DFW |   4.41576
-     MBS |    MSP |     9E |        31
-     SWF |    CVG |     OH |   0.39895
-     SAN |    ABQ |     WN |   4.25335
-      EV |    CVG |    DSM |   3.81505
-     RIC |    PIT |     US |   4.60964
-      EA |    SAV |    LGA | -0.794872
-      TW |    MCO |    SJU |  11.91927
-     PHX |    LGB |     YV |   5.21924
-      CO |    IAH |    BRO |   3.61479
-      WN |    BDL |    FLL |  14.76471
-     DEN |    SLC |     WN |  10.11833
-      US |    MDW |    EVV |   7.70254
-      AA |    HSV |    JAN |      -0.5
-      XE |    LAX |    RNO |   4.80609
-     BTR |    CSG |     EV |       144
-      US |    EWR |    PIT |  11.94815
-     ATL |    CHA |     EV |  12.78229
-      WN |    MCI |    SMF |   8.57414
-      US |    PBI |    MIA |  22.23333
-     MDW |    PHL | ML (1) |   2.98422
-      OH |    IAH |    CVG |   7.83323
-      HP |    PHX |    RNO |   8.90199
-     MLU |    SHV |     EV |         6
-      US |    JFK |    MCO |   1.48686
-     IND |    CVG |     OH |   2.71612
-     DFW |    BTR |     AA |   8.92193
-      YV |    HSV |    CLT |  11.57143
-     DSM |    DFW |     AA |   5.78228
-      B6 |    FLL |    JFK |  14.88198
-      OH |    CVG |    SAT |   6.21612
-     MDW |    ISP |     WN |   5.95192
-     DEN |    RAP |     YV |  10.02594
-     HNL |    SEA |     CO |        80
-     CVG |    FWA |     DH |   4.54734
-      UA |    LGA |    MCO | -0.434395
-      HP |    ELP |    PHX |   5.17444
-      DL |    MCI |    ATL |   8.45192
-      OH |    CRW |    ATL |   7.74893
-      UA |    MCO |    LGA |   4.14606
-     CHS |    DTW |     NW |   9.47465
-     BUF |    ROC |     CO |       -27
-      US |    SAV |    GSP |  -3.43023
-      OO |    MKE |    MKG |   11.5916
-     PHL |    DFW |     DL |   8.11047
-      HP |    PHX |    FLG |   3.16646
-     SAT |    LAX |     OO |   6.50745
-      YV |    PHX |    BOI |  10.36393
-      WN |    LAS |    BNA |   2.43196
-      DH |    ORD |    OKC |  16.20751
-      HP |    OAK |    LAS |   6.10566
-     DFW |    VPS |     OO |  -1.65517
-      AA |    SJC |    PHX |   3.55582
-     MLI |    OMA |     HP |   2.03578
-     JAX |    ATL |     TW |   3.47912
-      CO |    PHL |    DEN |   6.66399
-     OKC |    BWI |     WN | -10.33884
-      UA |    IAD |    TPA |   8.21062
-     ATL |    MCO |     EA |   3.61481
-      OO |    IAH |    DEN |  10.03147
-     TPA |    MCO |     HP |  13.05989
-      EV |    PIT |    CVG |  -1.91837
-     CLE |    MSN |     XE |   7.48199
-     DEN |    DTW |     UA |  10.38688
-      DL |    DFW |    MLU |  12.84697
-     IAD |    MEM |     NW |   3.19486
-     RDU |    DCA |     YV |        11
-     DCA |    BOS |     EV |  -2.41667
-     RDU |    DFW |     EV |   1.67764
-     EWR |    RSW |     DL |   5.33071
-     SJC |    EWR |     TZ |       273
-     PHL |    AUS |     US |  -7.96296
-     SLC |    ONT |     OO |   3.95418
-      9E |    OMA |    DTW |   8.54901
-      MQ |    CLT |    DFW |   7.34318
-     DCA |    BDL |     US |   4.55336
-     EWR |    IND |     CO |   9.19191
+
+ carrier | origin | dest | delay
+---------+--------+------+-----------
+      WN |    SEA |  DEN |  -2.27536
+      XE |    LAX |  SLC |        48
+      US |    JAX |  MLB | -0.614583
+      9E |    MSP |  SBN |    9.3352
+      OO |    ORD |  BZN |  13.22249
+      US |    MCO |  LAS |    2.3323
+      HP |    LAS |  ONT |   3.77265
+      EV |    MCO |  MSY |  -5.78481
+      AA |    BNA |  BWI |   1.65364
+      UA |    MSY |  IAD |   3.76286
+      OH |    XNA |  CVG |   1.93989
+      DL |    ELP |  DFW |   5.02481
+      EV |    CVG |  DSM |   3.81429
+      EA |    SAV |  LGA |  -1.67606
+      TW |    MCO |  SJU |  11.67437
+      CO |    IAH |  BRO |   4.65833
+      WN |    BDL |  FLL |   5.58333
+      US |    MDW |  EVV |   7.62189
+      AA |    HSV |  JAN |         2
+      XE |    LAX |  RNO |   4.93153
+      US |    EWR |  PIT |   11.5499
+      WN |    MCI |  SMF |   8.88977
+      OH |    IAH |  CVG |  10.25201
+      HP |    PHX |  RNO |   8.53277
+      US |    JFK |  MCO |   3.26494
+      YV |    HSV |  CLT |  11.57143
+      B6 |    FLL |  JFK |  16.72209
+      OH |    CVG |  SAT |  10.18149
+      UA |    LGA |  MCO | -0.530242
+      HP |    ELP |  PHX |   5.20278
+      DL |    MCI |  ATL |   8.92939
+      OH |    CRW |  ATL |   5.60769
+      UA |    MCO |  LGA |   3.75309
+      US |    SAV |  GSP |     -1.76
+      OO |    MKE |  MKG |   5.89157
+      HP |    PHX |  FLG |   3.28939
+      YV |    PHX |  BOI |  11.60109
+      WN |    LAS |  BNA |    3.2504
+      DH |    ORD |  OKC |  26.40726
+      HP |    OAK |  LAS |   6.09094
+      AA |    SJC |  PHX |   2.99822
+      CO |    PHL |  DEN |   4.24236
+      UA |    IAD |  TPA |   7.65432
+      OO |    IAH |  DEN |  10.24168
+      EV |    PIT |  CVG |   2.49289
+      DL |    DFW |  MLU |  13.02151
+      9E |    OMA |  DTW |   6.65785
+      MQ |    CLT |  DFW |  10.79866
+      DL |    PHL |  BOS |  10.61652
+      AA |    CLE |  DTW |   5.85714
+      UA |    LGA |  ORD |   9.32593
+      AS |    DFW |  SEA |   9.08622
+      US |    PIT |  PVD |   5.47605
+      OO |    PNS |  DFW |   7.37888
+      OH |    CVG |  OMA |   8.27173
+      US |    ABQ |  PHX |  -0.10775
+      9E |    BOS |  CVG |     -13.5
+      CO |    GSO |  EWR |   8.95024
+      WN |    PHX |  LBB |        -4
+      US |    BOS |  DCA |   2.89511
+      XE |    DAB |  EWR |  22.38442
+  ML (1) |    MDW |  MCI |   3.40886
+      WN |    SJC |  PDX |   4.50825
+      US |    ELM |  ITH |   2.47391
+      MQ |    BUF |  JFK |  19.44828
+      US |    MIA |  PHL |    8.5321
+      DL |    RSW |  MCO |   3.78639
+      XE |    CHS |  IAD |   7.42254
+      US |    IAD |  FLL |   4.45303
+      US |    DCA |  SYR |   4.27976
+      YV |    CHS |  ORD |  17.20021
+      NW |    DTW |  SNA |   7.64502
+      UA |    ALB |  ORD |   9.26902
+      WN |    OAK |  SAN |   5.46959
+      DL |    SWF |  CVG |  -0.33657
+      XE |    FCA |  SLC |   4.55399
+      B6 |    JFK |  PSE |  10.87912
+      MQ |    DFW |  ICT |   8.45207
+      TW |    DCA |  BDL |        62
+      US |    PIT |  JAX |   5.27639
+      MQ |    IAD |  JFK |   5.37321
+      WN |    SMF |  SAN |   5.72569
+      DH |    TPA |  TYS |      1.76
+      YV |    ORD |  BNA |  25.87164
+      US |    STL |  BWI |   4.93506
+      9E |    MSP |  CID |   8.16818
+      AA |    FAT |  RNO |        -5
+      DL |    SLC |  OKC |   7.25234
+      TW |    MCI |  IND |   1.46117
+      EV |    AEX |  JAN |         0
+      OO |    ICT |  MCI |       212
+      FL |    PIT |  FLL |   2.98876
+      PI |    ORF |  CLT |  10.46577
+      PI |    TPA |  SYR |  16.28814
+      US |    DCA |  CRW |  14.58108
+      US |    PSC |  PDX |  -2.11475
+      UA |    TPA |  PBI |   7.44199
+      CO |    IAH |  MFE |   5.13113
+      AS |    LGB |  PDX |   3.49451
+      HP |    SNA |  SMF |   4.80559
 
 (100 rows)

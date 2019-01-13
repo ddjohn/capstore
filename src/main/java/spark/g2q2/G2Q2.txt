@@ -1,6 +1,15 @@
+CREATE KEYSPACE IF NOT EXISTS cloudstore 
+WITH REPLICATION = {
+	'class':'SimpleStrategy',
+	'replication_factor':1
+};
+
+DROP TABLE cloudcourse.g2q2;
 
 CREATE TABLE IF NOT EXISTS cloudcourse.g2q2 (
 origin text,
 dest text,
 delay float,
 PRIMARY KEY((origin, dest), delay));
+
+SELECT * FROM cloudcourse.g2q2;

@@ -1,112 +1,112 @@
-(IND_CMH,2.7877042)
-(JFK_LAX,6.741222)
-(DFW_IAH,7.6054955)
-(ATL_PHX,9.122728)
-(LAX_SFO,9.503948)
-(CMI_ORD,10.22902)
+(BOS_LGA,3.6962929)
+(LGA_BOS,1.359967)
+(MSP_ATL,6.836814)
+(OKC_DFW,4.9395647)
+
+cqlsh:cloudcourse> select * from cloudcourse.g2q3;
 
 
  origin | dest | delay
 --------+------+-----------
     PSP |  SBA |        19
-    ATL |  HTS |   4.35481
-    STL |  MIA |   6.42765
-    MDW |  SMF |    8.4472
-    OGG |  IAH |  -2.67191
-    DAY |  IAD | -0.636648
-    JFK |  PIT |  15.61039
-    TYS |  MSP |    13.866
-    RSW |  LGA |   10.8668
-    BUF |  PIT |   5.49001
-    GSP |  MEM |   2.69918
-    LYH |  CLT |   5.45809
-    BGM |  ATL |   8.57655
-    OAK |  ONT |   4.86602
-    BOS |  CMH |  10.45792
-    HOU |  OKC |   7.16383
-    ONT |  BOS |  65.33334
-    LAN |  ATL |   7.38194
-    ORD |  SYR |  10.56648
-    VPS |  MEM |   1.68747
-    ORD |  STL |  10.43961
-    HNL |  ITO |  0.160682
-    IND |  TPA |   6.41492
-    PSP |  SNA |   1.05172
-    DFW |  CRP |    7.5811
+    ATL |  HTS |   4.36018
+    STL |  MIA |   6.43337
+    MDW |  SMF |   7.58852
+    OGG |  IAH |  -5.37751
+    DAY |  IAD |  -2.36663
+    JFK |  PIT |  15.01972
+    TYS |  MSP |  14.37563
+    RSW |  LGA |  10.58245
+    BUF |  PIT |   5.02435
+    GSP |  MEM |   3.53408
+    LYH |  CLT |   6.04596
+    BGM |  ATL |  11.81992
+    OAK |  ONT |   4.85237
+    BOS |  CMH |  10.44001
+    HOU |  OKC |   7.27499
+    ONT |  BOS |  10.11111
+    LAN |  ATL |   6.13668
+    ORD |  SYR |  10.87364
+    VPS |  MEM |   1.81342
+    ORD |  STL |  10.54867
+    HNL |  ITO | -0.156412
+    IND |  TPA |   6.15269
+    PSP |  SNA |   2.87826
+    DFW |  CRP |   7.56412
     RDU |  PNS |  -3.80357
-    PHX |  ASE |  15.20068
-    DAB |  EWR |  15.64415
-    PIE |  SJU |     30.25
-    GNV |  ATL |   7.96361
-    LAS |  AUS |   5.44093
-    MAZ |  SJU |         5
-    PHL |  HOU |   6.51468
-    RIC |  DTW |   3.09883
-    BNA |  TUL |  -3.29825
-    ROA |  RIC |   4.10313
-    PDX |  JFK |    8.7092
-    XNA |  MSP |   4.18443
-    DFW |  RIC |   6.86186
-    EUG |  MFR |   1.44578
-    ALB |  ORD |   7.12403
-    FLO |  ATL |   8.45725
-    FSD |  STL |   4.76002
+    PHX |  ASE |  16.24678
+    DAB |  EWR |  16.55233
+    PIE |  SJU |  29.08824
+    GNV |  ATL |   7.64092
+    LAS |  AUS |   5.49331
+    MAZ |  SJU |   5.10714
+    PHL |  HOU |   5.55785
+    RIC |  DTW |    3.2249
+    BNA |  TUL |   -4.6069
+    ROA |  RIC |    3.5711
+    PDX |  JFK |   8.71297
+    XNA |  MSP |   3.17012
+    DFW |  RIC |   7.04703
+    EUG |  MFR |   3.21212
+    ALB |  ORD |   7.53386
+    FLO |  ATL |   7.85131
+    FSD |  STL |   5.22541
     RSW |  MCI |      39.4
-    MCO |  MCI |   0.99862
-    MCI |  ATL |    8.1158
-    ORD |  CVG |   9.20356
-    ADQ |  ANC |   9.78108
-    FLL |  IAH |   3.66267
-    SMF |  SBA |   4.35897
-    CLE |  PWM | -0.105048
-    OKC |  HOU |   5.01418
-    SLC |  SFO |  12.23304
-    OKC |  CLE |  -8.79646
-    BPT |  ATL |  -4.00599
+    MCO |  MCI |   1.17333
+    MCI |  ATL |   8.02278
+    ORD |  CVG |   9.32663
+    ADQ |  ANC |   9.61508
+    FLL |  IAH |   3.54695
+    SMF |  SBA |   3.30693
+    CLE |  PWM | -0.477798
+    OKC |  HOU |   4.93815
+    SLC |  SFO |  12.15695
+    OKC |  CLE |   -6.4539
+    BPT |  ATL |  -3.32975
     EWR |  SWF |     13.25
-    BDL |  DAY | -19.51471
-    OXR |  LAX | -0.695386
-    IAH |  CRW |   1.16616
-    EGE |  CLT |   21.5625
-    MSY |  EWR |   9.80265
-    PHL |  EWR |  13.15276
-    BUF |  LGA |   8.60716
-    OMA |  DSM |   3.55776
-    CVG |  PHX |   8.22135
-    JFK |  BUR |   7.60866
-    ABQ |  SLC |   3.28795
-    OKC |  ICT |  -2.06969
-    PSG |  SIT |  11.57457
-    LAN |  AZO |   1.63375
-    MSO |  MSP |   2.82712
-    MIA |  CLE |   7.12635
-    ABQ |  TUS |   8.41233
-    BWI |  SLC |   1.15643
-    CLT |  GRR |  13.26046
+    BDL |  DAY | -18.52147
+    OXR |  LAX | -0.909811
+    IAH |  CRW |   1.38245
+    EGE |  CLT |  21.52239
+    MSY |  EWR |  10.06597
+    PHL |  EWR |  13.22712
+    BUF |  LGA |   8.47639
+    OMA |  DSM |   2.91906
+    CVG |  PHX |   7.72273
+    JFK |  BUR |   7.40128
+    ABQ |  SLC |   3.47384
+    OKC |  ICT |  -1.59986
+    PSG |  SIT |  10.45221
+    LAN |  AZO |   2.19454
+    MSO |  MSP |   2.94541
+    MIA |  CLE |   6.98392
+    ABQ |  TUS |   8.14043
+    BWI |  SLC |  0.790876
+    CLT |  GRR |  11.03399
     SAV |  DCA |  -2.88889
-    ATL |  VPS |  15.90969
-    STL |  LIT |   7.75965
+    ATL |  VPS |  14.59499
+    BOS |  ONT |       -18
+    STL |  LIT |   7.77542
     RIC |  BUF |       -41
-    SAN |  ELP |   4.14037
-    ABQ |  ELP |   6.12477
-    ORD |  SPI |  12.61979
-    DEN |  ASE |   8.46736
-    BTV |  PHL |   7.16107
-    BWI |  ISP |   6.32017
-    LAX |  CMH |   8.81612
-    IAD |  SCE |   1.07009
-    IAH |  SLC |   4.91034
-    AVL |  DTW |   3.20773
-    ELP |  ABQ |   3.53387
-    BUF |  ALB |   4.92172
-    AUS |  SJC |    3.4315
-    CVG |  TYS |   7.96264
-    CDC |  SGU |   1.70513
-    DTW |  ALB |   7.04873
-    OGG |  ITO | -0.710059
-    PHL |  MCO |    10.642
-    PHF |  MCO |    2.0896
-    GSO |  IAH |   4.68141
-    MSP |  COS |   6.43635
+    SAN |  ELP |   4.01706
+    ABQ |  ELP |   5.96257
+    ORD |  SPI |   12.4116
+    DEN |  ASE |   9.64815
+    BTV |  PHL |   6.84004
+    BWI |  ISP |   6.47895
+    LAX |  CMH |   8.53699
+    IAD |  SCE |   1.95455
+    IAH |  SLC |   5.13607
+    AVL |  DTW |   3.24086
+    ELP |  ABQ |    3.5631
+    BUF |  ALB |   4.79006
+    AUS |  SJC |   3.21891
+    CVG |  TYS |   7.09782
+    CDC |  SGU |   3.07634
+    DTW |  ALB |   7.47415
+    OGG |  ITO | -0.942828
+    PHL |  MCO |  10.28516
+    PHF |  MCO |   0.77957
+    GSO |  IAH |   5.00119
 
 (100 rows)

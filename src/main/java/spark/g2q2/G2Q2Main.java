@@ -13,6 +13,9 @@ import spark.globals.Average;
 import spark.globals.MyContext;
 
 public class G2Q2Main {
+	private static final String[] FILTER = {
+			//"CMI", "BWI", "MIA", "LAX", "IAH", "SFO",
+			"SRQ", "CMH", "JFK", "SEA", "BOS"};
 
 	public static final void main(String[] args) throws InterruptedException {
 
@@ -47,12 +50,20 @@ public class G2Q2Main {
 					return Optional.of(average);
 				});
 
+		// Filter out fields of interest
+		stream
+		.filter(x -> {
+			for(String f : FILTER) {
+				if(x._1.startsWith(f)) {
+					return true;
+				}
+			}
+			return false;
+		})
 
 		// Sort by swapping values to keys and back
-		stream
-		.mapToPair(x -> x.swap())
 		.transformToPair(x -> x.sortByKey(true))
-		.mapToPair(x -> x.swap())
+
 		// Print
 		.print(1000);
 

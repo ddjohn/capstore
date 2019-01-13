@@ -1,4 +1,0 @@
-
-CREATE TABLE IF NOT EXISTS cloudcourse.g1q3 (
-day text PRIMARY KEY,
-delay float);

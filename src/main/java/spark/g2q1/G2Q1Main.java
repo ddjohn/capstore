@@ -12,7 +12,9 @@ import spark.globals.Average;
 import spark.globals.MyContext;
 
 public class G2Q1Main {
-	private static final String[] FILTER = {"CMI", "BWI", "MIA", "LAX", "IAH", "SFO"};
+	private static final String[] FILTER = {
+			//"CMI", "BWI", "MIA", "LAX", "IAH", "SFO",
+			"SRQ", "CMH", "JFK", "SEA", "BOS"};
 
 	public static final void main(String[] args) throws InterruptedException {
 
@@ -46,24 +48,24 @@ public class G2Q1Main {
 						average.sum += i;
 					}
 					return Optional.of(average);
-				});
+				})
 
-		// Filter out fields of interest
-		stream
-		.filter(x -> {
-			for(String f : FILTER) {
-				if(x._1.startsWith(f)) {
-					return true;
-				}
-			}
-			return false;
-		})
+				// Filter out fields of interest
+				.filter(x -> {
+					for(String f : FILTER) {
+						if(x._1.startsWith(f)) {
+							return true;
+						}
+					}
+					return false;
+				})
 
-		// Sort
-		.transformToPair(x -> x.sortByKey(true))
+				// Sort
+				.transformToPair(x -> x.sortByKey(true));
 
 		// Print
-		.print(1000);
+		stream
+		.print(10000);
 
 		// Save to Cassandra
 		stream
@@ -73,13 +75,11 @@ public class G2Q1Main {
 		})
 
 		.foreachRDD(rdd -> {
-
 			CassandraJavaUtil.javaFunctions(rdd).writerBuilder(
 					"cloudcourse", "g2q1", 
 					CassandraJavaUtil.mapToRow(G2Q1Database.class))
 			.saveToCassandra();
 		});
-
 
 		ctx.run();
 		ctx.close();
