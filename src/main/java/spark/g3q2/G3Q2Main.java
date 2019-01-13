@@ -1,15 +1,10 @@
 package spark.g3q2;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
-
-import com.datastax.spark.connector.japi.CassandraJavaUtil;
-
 import mapreduce.globals.DataSet;
 import scala.Tuple2;
 import spark.globals.MyContext;

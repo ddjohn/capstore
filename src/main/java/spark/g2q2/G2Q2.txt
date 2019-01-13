@@ -12,4 +12,6 @@ dest text,
 delay float,
 PRIMARY KEY((origin, dest), delay));
 
+CREATE INDEX g2q2_idx ON cloudcourse.g2q2(origin);
+
 SELECT * FROM cloudcourse.g2q2;

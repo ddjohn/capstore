@@ -12,4 +12,10 @@ carrier text,
 delay float,
 PRIMARY KEY((origin, carrier)));
 
-SELECT * FROM cloudcourse.g2q1;
+CREATE INDEX g2q1_idx ON cloudcourse.g2q1(origin);
+
+SELECT * FROM cloudcourse.g2q1 where origin = 'SRQ';
+SELECT * FROM cloudcourse.g2q1 where origin = 'CMH';
+SELECT * FROM cloudcourse.g2q1 where origin = 'JFK';
+SELECT * FROM cloudcourse.g2q1 where origin = 'SEA';
+SELECT * FROM cloudcourse.g2q1 where origin = 'BOS';

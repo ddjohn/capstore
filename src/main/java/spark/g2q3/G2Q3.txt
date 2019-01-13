@@ -13,4 +13,9 @@ dest text,
 delay float,
 PRIMARY KEY((carrier, origin, dest)));
 
+CREATE INDEX g2q3_idx ON cloudcourse.g2q3(origin, dest);
+
 SELECT * FROM cloudcourse.g2q3;
+
+			"LGA_BOS", "BOS_LGA", "OKC_DFW", "MSP_ATL"
+
