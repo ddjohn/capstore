@@ -4,8 +4,12 @@ WITH REPLICATION = {
 	'replication_factor':1
 };
 
+DROP TABLE cloudcourse.g2q4;
+
 CREATE TABLE IF NOT EXISTS cloudcourse.g2q4 (
 origin text,
 dest text,
 delay float,
 PRIMARY KEY((origin, dest)));
+
+SELECT * FROM cloudcourse.g2q4;

@@ -1,0 +1,11 @@
+cqlsh> select * from cloudcourse.g2q4;
+
+ origin | dest | delay
+--------+------+---------
+    MSP |  ATL | 6.73701
+    LGA |  BOS | 1.48386
+    OKC |  DFW | 4.96906
+    BOS |  LGA | 3.78412
+
+(4 rows)
+

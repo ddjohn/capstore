@@ -1,102 +1,136 @@
+cqlsh> SELECT * FROM cloudcourse.g2q1 where origin = 'SRQ';
 
-cqlsh:cloudcourse> select * from cloudcourse.g2q1;
+ origin | carrier | delay
+--------+---------+-----------
+    SRQ |      NW |   4.85636
+    SRQ |  ML (1) |   7.35144
+    SRQ |      XE |   1.48977
+    SRQ |      DL |   4.86857
+    SRQ |      MQ |   5.35059
+    SRQ |      YV |   3.40402
+    SRQ |      AA |    3.6335
+    SRQ |      EA |   7.05537
+    SRQ |      B6 |  21.80409
+    SRQ |      UA |   3.95212
+    SRQ |      FL |   5.93359
+    SRQ |      CO |   8.13351
+    SRQ |      US |    3.9684
+    SRQ |      TW |   4.30468
+    SRQ |      OH |   9.70831
+    SRQ |      9E |  20.28125
+    SRQ |      EV |  17.74345
+    SRQ |      TZ | -0.381997
+
+(18 rows)
+cqlsh> SELECT * FROM cloudcourse.g2q1 where origin = 'CMH';
 
  origin | carrier | delay
 --------+---------+----------
     CMH |      HP | 11.55398
-    BOS |      US |  8.68792
-    SEA |      PS |  4.72064
     CMH |      YV |  7.96119
-    BOS |      PI | 11.88446
-    JFK |      US |  13.1116
-    BOS |      TZ |  3.06379
-    BOS |      B6 |  9.91886
-    SRQ |      NW |  4.85636
     CMH |      OO |  8.06281
     CMH |      MQ | 12.40836
+    CMH |      WN |  8.13078
+    CMH |      EV | 11.37179
+    CMH |      DL |  4.71334
+    CMH |      TW |   6.1591
+    CMH |      B6 |  15.5546
+    CMH |      NW |  4.04155
+    CMH |      CO |  8.49456
+    CMH |      PI |  5.20129
+    CMH |      DH |  3.49111
+    CMH |      9E |  8.41254
+    CMH |      XE |  9.20211
+    CMH |      AA |  3.51393
+    CMH |  ML (1) |  4.36646
+    CMH |      US |   5.9933
+    CMH |      EA |  5.93739
+    CMH |      UA |   8.6186
+    CMH |      OH | 10.53272
+
+(21 rows)
+cqlsh> SELECT * FROM cloudcourse.g2q1 where origin = 'JFK';
+
+ origin | carrier | delay
+--------+---------+----------
+    JFK |      US |  13.1116
     JFK |  PA (1) | 11.52348
-    BOS |      DL |  7.44534
     JFK |      XE |  8.11374
-    BOS |      NW |  7.24519
-    SRQ |  ML (1) |  7.35144
-    BOS |      MQ | 13.18854
-    BOS |      CO | 10.36965
     JFK |      UA |  5.96833
+    JFK |      AA | 10.08074
+    JFK |      TW | 12.63907
+    JFK |      EA | 14.00594
+    JFK |      YV | 18.08036
+    JFK |      EV | 14.15615
+    JFK |      PI | 16.09605
+    JFK |      HP | 14.17756
+    JFK |      NW | 11.63782
+    JFK |      OH | 16.65131
+    JFK |      DL | 11.98548
+    JFK |      DH |  8.74298
+    JFK |      B6 |  11.1271
+    JFK |      CO |  8.20121
+    JFK |      MQ | 12.92743
+
+(18 rows)
+cqlsh> SELECT * FROM cloudcourse.g2q1 where origin = 'SEA';
+
+ origin | carrier | delay
+--------+---------+----------
+    SEA |      PS |  4.72064
     SEA |      F9 |  7.48624
     SEA |      EA | 11.97501
     SEA |      OO |  2.70582
     SEA |      US |  6.41238
-    BOS |  PA (1) |  4.44717
-    SRQ |      XE |  1.48977
     SEA |      TZ |    6.345
-    SRQ |      DL |  4.86918
     SEA |      EV |   7.8963
-    BOS |      XE |  8.10292
     SEA |      WN |  8.53398
-    CMH |      WN |  8.13078
     SEA |      DH | 10.84184
-    CMH |      EV | 11.37179
-    SEA |      FL | 12.14802
-    BOS |  ML (1) |  5.73478
-    BOS |      YV | 25.87987
-    JFK |      AA | 10.08074
-    CMH |      DL |  4.71344
-    SRQ |      MQ |  5.35059
+    SEA |      FL | 12.14083
     SEA |      AS |  9.50846
-    JFK |      TW | 12.63907
-    CMH |      TW |   6.1591
     SEA |      B6 | 12.20609
-    BOS |      TW | 10.18005
-    CMH |      B6 |  15.5546
     SEA |      YV |  5.12226
-    CMH |      NW |  4.04155
-    CMH |      CO |  8.49456
-    BOS |      FL | 10.22269
-    BOS |      HP | 11.63228
-    JFK |      EA | 14.00594
-    SRQ |      YV |  3.40402
-    JFK |      YV | 18.08036
-    BOS |      EA |  8.89143
-    JFK |      EV | 14.15615
-    SRQ |      AA |   3.6335
-    JFK |      PI | 16.09605
-    CMH |      PI |  5.20129
-    CMH |      DH |  3.49111
-    CMH |      9E |  8.41254
-    BOS |      AA |  8.73351
-    JFK |      HP | 14.17756
-    JFK |      NW | 11.63782
-    JFK |      OH | 16.65131
-    CMH |      XE |  9.20211
-    CMH |      AA |  3.51393
-    SRQ |      EA |  7.05537
-    SRQ |      B6 | 21.80409
     SEA |  PA (1) | 27.33684
     SEA |      HA |  6.85545
-    CMH |  ML (1) |  4.36646
-    JFK |      DL | 11.98667
-    CMH |      US |   5.9933
-    SRQ |      UA |  3.95212
     SEA |      AA |  6.93915
-    SRQ |      FL |  5.93819
-    BOS |      OH | 12.59479
-    SEA |      DL |  6.53562
+    SEA |      DL |  6.53462
     SEA |      TW |  9.33205
-    SRQ |      CO |  8.13351
-    SRQ |      US |   3.9684
-    SRQ |      TW |  4.30468
-    JFK |      DH |  8.74298
-    CMH |      EA |  5.93739
-    JFK |      B6 |  11.1271
     SEA |      CO |  7.09646
-    SRQ |      OH |  9.70831
-    CMH |      UA |   8.6186
     SEA |      XE | 11.82114
-    BOS |      EV |  7.20814
     SEA |      NW |  6.49876
-    BOS |      UA | 10.06615
-    SRQ |      9E | 20.28125
     SEA |      OH | 11.91209
     SEA |      PI | 11.53836
+    SEA |      HP |  8.99352
+    SEA |      UA |  9.52127
 
-(100 rows)
+(25 rows)
+cqlsh> SELECT * FROM cloudcourse.g2q1 where origin = 'BOS';
+
+ origin | carrier | delay
+--------+---------+----------
+    BOS |      US |  8.68792
+    BOS |      PI | 11.88446
+    BOS |      TZ |  3.06379
+    BOS |      B6 |  9.91886
+    BOS |      DL |   7.4447
+    BOS |      NW |  7.24519
+    BOS |      MQ | 13.18854
+    BOS |      CO | 10.36965
+    BOS |  PA (1) |  4.44717
+    BOS |      XE |  8.10292
+    BOS |  ML (1) |  5.73478
+    BOS |      YV | 25.87987
+    BOS |      TW | 10.18005
+    BOS |      FL | 10.21598
+    BOS |      HP | 11.63228
+    BOS |      EA |  8.89143
+    BOS |      AA |  8.73351
+    BOS |      OH | 12.59479
+    BOS |      EV |  7.20814
+    BOS |      UA | 10.06615
+    BOS |      DH | 10.18101
+    BOS |      AS | 13.92557
+    BOS |      9E | 11.58736
+
+(23 rows)
+

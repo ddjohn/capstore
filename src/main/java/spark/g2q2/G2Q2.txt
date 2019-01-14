@@ -10,8 +10,12 @@ CREATE TABLE IF NOT EXISTS cloudcourse.g2q2 (
 origin text,
 dest text,
 delay float,
-PRIMARY KEY((origin, dest), delay));
+PRIMARY KEY((origin, dest)));
 
 CREATE INDEX g2q2_idx ON cloudcourse.g2q2(origin);
 
-SELECT * FROM cloudcourse.g2q2;
+SELECT * FROM cloudcourse.g2q2 where origin = 'SRQ';
+SELECT * FROM cloudcourse.g2q2 where origin = 'CMH';
+SELECT * FROM cloudcourse.g2q2 where origin = 'JFK';
+SELECT * FROM cloudcourse.g2q2 where origin = 'SEA';
+SELECT * FROM cloudcourse.g2q2 where origin = 'BOS';

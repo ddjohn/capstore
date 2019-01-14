@@ -1,0 +1,38 @@
+cqlsh> select * from cloudcourse.g2q3;
+
+ carrier | origin | dest | delay
+---------+--------+------+-----------
+      OH |    BOS |  LGA |  30.44828
+      NW |    BOS |  LGA |  15.22985
+      OH |    OKC |  DFW |      47.5
+      OH |    MSP |  ATL |   8.30347
+      FL |    MSP |  ATL |   6.29268
+      EV |    MSP |  ATL |  10.12093
+      OO |    OKC |  DFW |  12.83509
+      NW |    LGA |  BOS |  14.44444
+      EA |    LGA |  BOS |   4.82137
+      DL |    OKC |  DFW |   6.73154
+      OH |    LGA |  BOS |  27.98485
+      OO |    MSP |  ATL |     4.766
+      EA |    BOS |  LGA |   9.48067
+      EA |    MSP |  ATL |   4.20156
+      TW |    BOS |  LGA |       -11
+      MQ |    LGA |  BOS |   9.86623
+      AA |    BOS |  LGA |        28
+      EV |    OKC |  DFW |   1.35897
+      AA |    LGA |  BOS |      28.5
+      US |    LGA |  BOS |  -2.90424
+      TW |    LGA |  BOS |        -3
+      NW |    MSP |  ATL |   7.01582
+      MQ |    OKC |  DFW |   4.67575
+      TZ |    BOS |  LGA |       133
+      TW |    OKC |  DFW |  0.101243
+      DL |    BOS |  LGA |    2.0246
+      DL |    MSP |  ATL |   6.34326
+      DL |    LGA |  BOS |   1.74732
+  PA (1) |    BOS |  LGA |   6.07175
+      MQ |    BOS |  LGA |  12.64327
+      AA |    OKC |  DFW |   4.57011
+      US |    BOS |  LGA |   1.09524
+  PA (1) |    LGA |  BOS | -0.418725
+

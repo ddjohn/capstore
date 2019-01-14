@@ -51,24 +51,23 @@ public class G2Q3Main {
 						average.sum += i;
 					}
 					return Optional.of(average);
-				});
+				})
 
-		// Filter out the combinations of interest
-		stream
-		.filter(x -> {
-			for(String f : FILTER) {
-				if(x._1.startsWith(f)) {
-					return true;
-				}
-			}
-			return false;
-		})
+				// Filter out the combinations of interest
+				.filter(x -> {
+					for(String f : FILTER) {
+						if(x._1.startsWith(f)) {
+							return true;
+						}
+					}
+					return false;
+				})
 
-		// Sort
-		.transformToPair(x -> x.sortByKey(true))
+				// Sort
+				.transformToPair(x -> x.sortByKey(true));
 
 		// Print
-		.print(1000);
+		stream.print(1000);
 
 
 		// Save to cassandra

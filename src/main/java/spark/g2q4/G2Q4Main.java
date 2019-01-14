@@ -17,51 +17,52 @@ public class G2Q4Main {
 			//"CMI_ORD", "IND_CMH", "DFW_IAH", "LAX_SFO", "JFK_LAX", "ATL_PHX",
 			"LGA_BOS", "BOS_LGA", "OKC_DFW", "MSP_ATL"
 	};
-	
+
 	public static final void main(String[] args) throws InterruptedException {
 
 		MyContext ctx = new MyContext();
-		
+
 		JavaPairDStream<String, Average> stream = ctx.createStream("cloudcourse")
 
-		.flatMapToPair(x -> {
-			
-			// Parse input data
-			String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
+				.flatMapToPair(x -> {
 
-			// Build list with (origin_dest, arrdelay)
-			List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
-			if(tokens.length > DataSet.ARRDELAY && 
-					tokens[DataSet.ORIGIN  ].isEmpty() == false && 
-					tokens[DataSet.DEST    ].isEmpty() == false && 
-					tokens[DataSet.ARRDELAY].isEmpty() == false) {
+					// Parse input data
+					String[] tokens =  x.value().substring(1, x.value().length() - 1).split(",");
 
-				list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST], Float.parseFloat(tokens[DataSet.ARRDELAY])));
-			}
-			return list.iterator();
-		})
+					// Build list with (origin_dest, arrdelay)
+					List<Tuple2<String, Float>> list = new ArrayList<Tuple2<String, Float>>();
+					if(tokens.length > DataSet.ARRDELAY && 
+							tokens[DataSet.ORIGIN  ].isEmpty() == false && 
+							tokens[DataSet.DEST    ].isEmpty() == false && 
+							tokens[DataSet.ARRDELAY].isEmpty() == false) {
 
-		// Update the average class with batch information 
-		.updateStateByKey((nums, current) -> {
+						list.add(new Tuple2<String, Float>(tokens[DataSet.ORIGIN] + "_" + tokens[DataSet.DEST], Float.parseFloat(tokens[DataSet.ARRDELAY])));
+					}
+					return list.iterator();
+				})
 
-			Average average = current.or(new Average());
-			for(float i : nums) {
-				average.count++;
-				average.sum += i;
-			}
-			return Optional.of(average);
-		});
+				// Update the average class with batch information 
+				.updateStateByKey((nums, current) -> {
 
-		
-		// Filter out fields of interest
-		stream.filter(x -> {		
-			return Arrays.asList(FILTER).contains(x._1);
-		})
-		
-		// Sort
-		.transformToPair(x -> x.sortByKey(true))
+					Average average = current.or(new Average());
+					for(float i : nums) {
+						average.count++;
+						average.sum += i;
+					}
+					return Optional.of(average);
+				})
+
+
+				// Filter out fields of interest
+				.filter(x -> {		
+					return Arrays.asList(FILTER).contains(x._1);
+				})
+
+				// Sort
+				.transformToPair(x -> x.sortByKey(true));
 
 		// Print
+		stream
 		.print(1000);
 
 		// Save to Cassandra
