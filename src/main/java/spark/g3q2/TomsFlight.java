@@ -22,6 +22,30 @@ public class TomsFlight implements Serializable {
 	}
 
 	public String toString() {
-		return "[" + origin + "->" + dest + ": " + depDate + " " + depTime + " " + flight + "]";
+		return "[" + origin + "->" + dest + ": " + depDate + " " + depTime + " " + flight + " (" + delay +")]";
+	}
+	
+	public String getOrigin() {
+		return origin;
+	}
+
+	public String getDest() {
+		return dest;
+	}
+
+	public float getDelay() {
+		return delay;
+	}
+
+	public String getFlight() {
+		return flight;
+	}
+
+	public String getDepdate() {
+		return depDate;
+	}
+	
+	public String getDeptime() {
+		return depTime;
 	}
 }
