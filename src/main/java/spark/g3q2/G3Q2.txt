@@ -16,3 +16,45 @@ delay float,
 PRIMARY KEY((origin, dest, depdate, deptime, flight)));
 	
 SELECT * FROM cloudcourse.g3q2;
+
+//---
+select origin,dest,flight,depdate,deptime,MIN(delay) 
+from cloudcourse.g3q2 
+where origin = 'BOS' and dest = 'ATL' and depdate = '2008-04-03' and deptime <= '1200' 
+allow filtering;  
+
+select origin,dest,flight,depdate,deptime,MIN(delay) 
+from cloudcourse.g3q2 
+where origin = 'ATL' and dest = 'LAX' and depdate = '2008-04-05' and deptime >= '1200' 
+allow filtering;  
+//---
+select origin,dest,flight,depdate,deptime,MIN(delay) 
+from cloudcourse.g3q2 
+where origin = 'PHX' and dest = 'JFK' and depdate = '2008-09-07' and deptime <= '1200' 
+allow filtering;  
+
+select origin,dest,flight,depdate,deptime,MIN(delay) 
+from cloudcourse.g3q2 
+where origin = 'JFK' and dest = 'MSP' and depdate = '2008-09-09' and deptime >= '1200' 
+allow filtering;  
+//---
+select origin,dest,flight,depdate,deptime,MIN(delay) 
+from cloudcourse.g3q2 
+where origin = 'DFW' and dest = 'STL' and depdate = '2008-01-24' and deptime <= '1200' 
+allow filtering;  
+
+select origin,dest,flight,depdate,deptime,MIN(delay) 
+from cloudcourse.g3q2 
+where origin = 'STL' and dest = 'ORD' and depdate = '2008-01-26' and deptime >= '1200' 
+allow filtering;  
+//---
+select origin,dest,flight,depdate,deptime,MIN(delay) 
+from cloudcourse.g3q2 
+where origin = 'LAX' and dest = 'MIA' and depdate = '2008-05-16' and deptime <= '1200' 
+allow filtering;  
+
+select origin,dest,flight,depdate,deptime,MIN(delay) 
+from cloudcourse.g3q2 
+where origin = 'MIA' and dest = 'LAX' and depdate = '2008-05-18' and deptime >= '1200' 
+allow filtering;  
+//---

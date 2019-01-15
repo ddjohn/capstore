@@ -1,0 +1,87 @@
+cqlsh> //--------------------------------------------------------------
+cqlsh> select origin,dest,flight,depdate,deptime,MIN(delay) 
+   ... from cloudcourse.g3q2 
+   ... where origin = 'BOS' and dest = 'ATL' and depdate = '2008-04-03' and deptime <= '1200' 
+   ... allow filtering;  
+
+ origin | dest | flight | depdate    | deptime | system.min(delay)
+--------+------+--------+------------+---------+-------------------
+    BOS |  ATL | FL 273 | 2008-04-03 |    0853 |                 7
+
+(1 rows)
+cqlsh> 
+cqlsh> select origin,dest,flight,depdate,deptime,MIN(delay) 
+   ... from cloudcourse.g3q2 
+   ... where origin = 'ATL' and dest = 'LAX' and depdate = '2008-04-05' and deptime >= '1200' 
+   ... allow filtering;  
+
+ origin | dest | flight | depdate    | deptime | system.min(delay)
+--------+------+--------+------------+---------+-------------------
+    ATL |  LAX |  DL 75 | 2008-04-05 |    1704 |                -2
+
+(1 rows)
+cqlsh> //--------------------------------------------------------------
+cqlsh> select origin,dest,flight,depdate,deptime,MIN(delay) 
+   ... from cloudcourse.g3q2 
+   ... where origin = 'PHX' and dest = 'JFK' and depdate = '2008-09-07' and deptime <= '1200' 
+   ... allow filtering;  
+
+ origin | dest | flight | depdate    | deptime | system.min(delay)
+--------+------+--------+------------+---------+-------------------
+    PHX |  JFK |  US 12 | 2008-09-07 |    0904 |               -25
+
+(1 rows)
+cqlsh> 
+cqlsh> select origin,dest,flight,depdate,deptime,MIN(delay) 
+   ... from cloudcourse.g3q2 
+   ... where origin = 'JFK' and dest = 'MSP' and depdate = '2008-09-09' and deptime >= '1200' 
+   ... allow filtering;  
+
+ origin | dest | flight | depdate    | deptime | system.min(delay)
+--------+------+--------+------------+---------+-------------------
+    JFK |  MSP | NW 609 | 2008-09-09 |    1747 |               -17
+
+(1 rows)
+cqlsh> //--------------------------------------------------------------
+cqlsh> select origin,dest,flight,depdate,deptime,MIN(delay) 
+   ... from cloudcourse.g3q2 
+   ... where origin = 'DFW' and dest = 'STL' and depdate = '2008-01-24' and deptime <= '1200' 
+   ... allow filtering;  
+
+ origin | dest | flight  | depdate    | deptime | system.min(delay)
+--------+------+---------+------------+---------+-------------------
+    DFW |  STL | AA 1336 | 2008-01-24 |    0657 |               -14
+
+(1 rows)
+cqlsh> select origin,dest,flight,depdate,deptime,MIN(delay) 
+   ... from cloudcourse.g3q2 
+   ... where origin = 'STL' and dest = 'ORD' and depdate = '2008-01-26' and deptime >= '1200' 
+   ... allow filtering;  
+
+ origin | dest | flight  | depdate    | deptime | system.min(delay)
+--------+------+---------+------------+---------+-------------------
+    STL |  ORD | AA 2245 | 2008-01-26 |    1654 |                -5
+
+(1 rows)
+cqlsh> //--------------------------------------------------------------
+cqlsh> select origin,dest,flight,depdate,deptime,MIN(delay) 
+   ... from cloudcourse.g3q2 
+   ... where origin = 'LAX' and dest = 'MIA' and depdate = '2008-05-16' and deptime <= '1200' 
+   ... allow filtering;  
+
+ origin | dest | flight | depdate    | deptime | system.min(delay)
+--------+------+--------+------------+---------+-------------------
+    LAX |  MIA | AA 231 | 2008-05-16 |    0556 |                10
+
+(1 rows)
+cqlsh> select origin,dest,flight,depdate,deptime,MIN(delay) 
+   ... from cloudcourse.g3q2 
+   ... where origin = 'MIA' and dest = 'LAX' and depdate = '2008-05-18' and deptime >= '1200' 
+   ... allow filtering;  
+
+ origin | dest | flight | depdate    | deptime | system.min(delay)
+--------+------+--------+------------+---------+-------------------
+    MIA |  LAX | AA 397 | 2008-05-18 |    1841 |               -19
+
+(1 rows)
+cqlsh> //--------------------------------------------------------------
