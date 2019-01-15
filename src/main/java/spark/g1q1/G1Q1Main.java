@@ -32,9 +32,6 @@ public class G1Q1Main {
 			return list.iterator();
 		})
 
-		// Sum by key
-		.reduceByKey((i1, i2) -> i1 + i2)
-
 		// Remember the keys
 		.updateStateByKey((nums, current) -> {
 			long sum = current.or(0L); 

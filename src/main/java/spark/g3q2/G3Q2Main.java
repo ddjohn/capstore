@@ -23,9 +23,9 @@ public class G3Q2Main implements Serializable {
 		JavaDStream<TomsFlight> stream = ctx.createStream("cloudcourse")
 
 				.flatMap(x -> {
-					List<TomsFlight> list = new ArrayList<TomsFlight>();
-
 					String[] tokens = x.value().substring(1, x.value().length() - 1).split(",");
+
+					List<TomsFlight> list = new ArrayList<TomsFlight>();
 
 					if(tokens.length > DataSet.ARRDELAY) {
 						list.add(new TomsFlight(

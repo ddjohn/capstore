@@ -6,3 +6,5 @@ sleep 2
 nohup /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties&
 sleep 2
 
+/opt/kafka/bin/kafka-topics.sh --list --zookeeper localhost
+
