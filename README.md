@@ -21,7 +21,7 @@ https://docs.google.com/document/d/1jrREFppkCRVBYSl1C7hKfoaREpwUgRnbk3Yl_Y4tiN8/
 # Task 2
 
 Video
-https://youtu.be/uPlSskUjsME
+https://youtu.be/ySHOsuSHsUs
 
 Report
 https://docs.google.com/document/d/1AHN3XqrtoOKp__OeUwdabHv6yn67SZOIjssZBKBNfpo/edit?usp=sharing
